@@ -4,10 +4,12 @@ import { CreateUserDto } from './dto/create-user.dto';
 
 @Controller('users')
 export class UsersController {
-  constructor(private readonly usersService: UsersService) {}
+  constructor(private readonly usersService: UsersService) { }
 
   @Post()
-  create(@Body() user: CreateUserDto) {
+  create(@Body() user: CreateUserDto) {     
+    console.log(user);
+       
     return this.usersService.create(user);
   }
 
@@ -23,7 +25,7 @@ export class UsersController {
 
   @Patch(':id')
   update(@Param('id') id: string, @Body() updateUserDto) {
-    return this.usersService.update(+id, );
+    return this.usersService.update(+id,);
   }
 
   @Delete(':id')
