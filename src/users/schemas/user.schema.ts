@@ -28,7 +28,11 @@ class Classe {
 @Schema({ _id: false })
 class TableauDays {
     @Prop()
-    day: Classe[];
+    name: string;
+    @Prop()
+    dayNum: number;
+    @Prop()
+    classes: Classe[];
 }
 
 @Schema({ _id: false })
@@ -43,6 +47,8 @@ class Cycle {
     startDate: string;
     @Prop()
     endDate: string;
+    @Prop()
+    weeks: any[];
 }
 
 @Schema({ _id: false })

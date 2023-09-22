@@ -7,6 +7,7 @@ import { MongooseModule } from '@nestjs/mongoose';
 import { classeHandler } from './middleware/classes.middleware';
 import { UsersController } from './users/users.controller';
 import { cycleHandler } from './middleware/cycles.middleware';
+import { tableauDeServiceHandler } from './middleware/tableauDeService.middleware';
 
 @Module({
   imports: [
@@ -24,11 +25,12 @@ import { cycleHandler } from './middleware/cycles.middleware';
 export class AppModule implements NestModule {
   configure(consumer: MiddlewareConsumer) {
     consumer
-      .apply(classeHandler, cycleHandler)
-      // .exclude(
-      //   { path: 'users', method: RequestMethod.GET },
-      //   'users/(.*)',
-      // )
+      .apply(classeHandler,
+        cycleHandler,
+        tableauDeServiceHandler)
+      .exclude(
+        { path: 'users', method: RequestMethod.GET },
+      )
       .forRoutes(UsersController);
   }
 }

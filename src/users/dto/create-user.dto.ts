@@ -26,9 +26,11 @@ class Place {
 }
 
 class TableauDays {
-    @ValidateNested({ each: true })
+    readonly name: string;
+    readonly dayNum: number;
+    // @ValidateNested({ each: true })
     @Type(() => Classe)
-    readonly day: Classe[];
+    readonly classes: Classe[];
 }
 
 class Cycle {
@@ -37,6 +39,8 @@ class Cycle {
     readonly apsFamille: string;
     readonly startDate: string;
     readonly endDate: string;
+    readonly weeks: any[];
+
 }
 
 export class CreateUserDto {
@@ -46,17 +50,17 @@ export class CreateUserDto {
     readonly etablissement: string;
     readonly prof: string;
     readonly mission: string;
-    @ValidateNested({ each: true })
+    // @ValidateNested({ each: true })
     @Type(() => Classe)
-    @MaxLength(12, {
-        each: true,
-      })
+    // @MaxLength(12, {
+    //     each: true,
+    //   })
     readonly classes: Classe[];
-    @ValidateNested({ each: true })
+    // @ValidateNested({ each: true })
     @Type(() => TableauDays)
-    @MaxLength(6, {
-        each: true,
-      })
+    // @MaxLength(6, {
+    //     each: true,
+    //   })
     readonly tableauDeService: TableauDays[];
     @ValidateNested({ each: true })
     @Type(() => Cycle)
