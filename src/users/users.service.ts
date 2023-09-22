@@ -8,7 +8,7 @@ export class UsersService {
   constructor(@InjectModel(User.name)
   private userModel: mongoose.Model<User>) { }
 
-  async create(user: User): Promise<User> {    
+  async create(user: User): Promise<User> {
     const res = await this.userModel.create(user)
     return res
   }
@@ -18,16 +18,18 @@ export class UsersService {
     return users
   }
 
-  async findOne(id: number): Promise<User> {
+  async findOne(id: string): Promise<User> {
     const user = await this.userModel.findById(id)
     return user;
   }
 
-  async update(id: number) {
-    return `This action updates a #${id} user`;
+  async update(id: string) {
+    const user = await this.userModel.findByIdAndUpdate(id)
+    return user;
   }
 
-  async remove(id: number) {
-    return `This action removes a #${id} user`;
+  async remove(id: string) {
+    const user = await this.userModel.findByIdAndDelete(id)
+    return user;
   }
 }

@@ -16,7 +16,7 @@ export function tableauDeServiceHandler(req: Request, res: Response, next: NextF
             classes: []
         }
         for (const classe of dayArr) {
-            day.classes.push(classe)
+            day.classes.push(classe) 
         }
         tableauDeService.push(day)
     }
