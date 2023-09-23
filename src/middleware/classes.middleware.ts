@@ -12,7 +12,7 @@ export function classeHandler(req: Request, res: Response, next: NextFunction) {
         classes = classes.map(({ name, nvId, nvName, time }) => ({ name, nvId, nvName, time }))
         classes.sort((a, b) => a.nvId - b.nvId);
         req.body.classes = classes
-    }
+    } 
 
     next();
 };

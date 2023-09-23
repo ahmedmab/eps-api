@@ -8,6 +8,7 @@ import { classeHandler } from './middleware/classes.middleware';
 import { UsersController } from './users/users.controller';
 import { cycleHandler } from './middleware/cycles.middleware';
 import { tableauDeServiceHandler } from './middleware/tableauDeService.middleware';
+import { classeDates } from './middleware/classeDates.middleware';
 
 @Module({
   imports: [
@@ -26,11 +27,13 @@ export class AppModule implements NestModule {
   configure(consumer: MiddlewareConsumer) {
     consumer
       .apply(classeHandler,
+        tableauDeServiceHandler,
         cycleHandler,
-        tableauDeServiceHandler)
-      .exclude(
-        { path: 'users', method: RequestMethod.GET },
-      )
+        classeDates
+        )
+      // .exclude(
+      //   { path: 'users', method: RequestMethod.GET },
+      // )
       .forRoutes(UsersController);
   }
 }

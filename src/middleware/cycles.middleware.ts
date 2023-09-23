@@ -2,36 +2,36 @@ import { Request, Response, NextFunction } from 'express';
 import * as moment from "moment";
 
 export function cycleHandler(req: Request, res: Response, next: NextFunction) {
+    const days: string[] = ['', 'Lundi', 'Mardi', 'Mercredi', 'Jeudi', 'Vendredi', 'Samedi']
+    let cycles: any[] = req.body.cycles
+
+    let weekDaysNum: number[] = []
+    for (const day of req.body.tableauDeService) {
+        weekDaysNum.push(day.dayNum)
+    }
 
     for (const cycle of req.body.cycles) {
-        let weeks: any[] = []
-        var startDate = moment(cycle.startDate).weekday(8)
+        let weekDays: any[] = []
+        // var startDate = moment(cycle.startDate).weekday(8)
 
+        var startDate = moment(cycle.startDate)
         while (startDate.isBefore(new Date(cycle.endDate))) {
-            let startDateWeek = startDate.format('DD-MM-YYYY');
-            let endDateWeek = startDate.clone().add(6, 'days');
-            var week = { startDateWeek: startDateWeek, endDateWeek: endDateWeek.format('DD-MM-YYYY') }
-            if (endDateWeek.isSameOrBefore(new Date(cycle.endDate))) {
-                weeks.push(week);
-            }
-            startDate.add(7, 'days');
+            let dayData: any
+            if (startDate.format('ddd') !== 'Sun' && weekDaysNum.includes(startDate.day())) {
+                dayData = {
+                    dayNum: startDate.day(),
+                    name: days[startDate.day()],
+                    date: startDate.format('DD-MM-YYYY')
+                }
+                weekDays.push(dayData)
 
+            }
+            startDate = startDate.add(1, 'days');
         }
-        if (true) {
-            let firstMonday = moment(cycle.startDate).weekday(7).format('DD-MM-YYYY')
-            week = { startDateWeek: moment(cycle.startDate).format('DD-MM-YYYY'), endDateWeek: firstMonday}
-            weeks.unshift(week);
-        }
-        if (true) {
-            let lastMonday = moment(cycle.endDate).weekday(1).format('DD-MM-YYYY')
-            week = { startDateWeek: lastMonday, endDateWeek: moment(new Date(cycle.endDate)).format('DD-MM-YYYY')}
-            weeks.push(week);
-        }
-        // cycle.weeks.push(week); 
-        cycle.weeks = weeks
- 
+
+        cycle.weekDays = weekDays
+
     }
-    // cycles = cycles.map(({ name, nvId, nvName }) => ({ name, nvId, nvName }))
-    // req.body.cycles = cycles
+    req.body.cycles = cycles
     next();
 };
