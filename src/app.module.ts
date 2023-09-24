@@ -31,9 +31,11 @@ export class AppModule implements NestModule {
         cycleHandler,
         classeDates
         )
-      // .exclude(
-      //   { path: 'users', method: RequestMethod.GET },
-      // )
+      .exclude(
+        { path: 'users', method: RequestMethod.GET },
+        { path: 'users/:id', method: RequestMethod.GET },
+
+      )
       .forRoutes(UsersController);
   }
 }

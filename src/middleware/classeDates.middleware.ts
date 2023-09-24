@@ -8,7 +8,7 @@ export function classeDates(req: Request, res: Response, next: NextFunction) {
     let tableau: any[] = req.body.tableauDeService
     for (const classe of req.body.classes) {
         for (const day of tableau) {
-            let classeData
+            let classeData:any = {}
             for (const classeDay of day.classes) {
                 if (classe.name === classeDay.name) {
                     classeData = {
@@ -16,10 +16,20 @@ export function classeDates(req: Request, res: Response, next: NextFunction) {
                         nvId: classe.nvId,
                         nvName: classe.nvName,
                         seance: classeDay.seance,
+                        dayNum: classeDay.time.id,
                         day: classeDay.time.day,
                         time: classeDay.time.hour,
                         seanceOfDay: +(classeDay.time.elem[classeDay.time.elem.length-1]),
+                        cycles: []
                     }
+                    // Tout les seances de cycle ex s1:
+                    for (const cycle of cycles) {
+                        let cycleDates = cycle.weekDays.filter(date=> moment(date).isoWeekday() === classeData.dayNum)
+                        classeData.cycles.push(cycleDates)
+                        
+                    }
+
+
                     classes.push(classeData)
                 }
             }
@@ -29,7 +39,7 @@ export function classeDates(req: Request, res: Response, next: NextFunction) {
     // classes = classes.map(({ name, nvId, nvName, time }) => ({ name, nvId, nvName, time }))
     // classes.sort((a, b) => a.nvId - b.nvId);
     req.body.classes = classes
-    console.log(req.body);
+    // console.log(req.body);
     
     next();
 };
