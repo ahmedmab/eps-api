@@ -22,14 +22,15 @@ export function classeDates(req: Request, res: Response, next: NextFunction) {
                         seanceOfDay: +(classeDay.time.elem[classeDay.time.elem.length-1]),
                         cycles: []
                     }
-                    // Tout les seances de cycle ex s1:
+                    // Tout les seances de cycle:
                     for (const cycle of cycles) {
-                        let cycleDates = cycle.weekDays.filter(date=> moment(date).isoWeekday() === classeData.dayNum)
+                        let cycleDates = cycle.weekDays.filter(day=> day.dayNum == classeData.dayNum)
                         classeData.cycles.push(cycleDates)
                         
                     }
 
-
+                    console.log(classeData);
+                    
                     classes.push(classeData)
                 }
             }
@@ -40,6 +41,7 @@ export function classeDates(req: Request, res: Response, next: NextFunction) {
     // classes.sort((a, b) => a.nvId - b.nvId);
     req.body.classes = classes
     // console.log(req.body);
-    
+        
     next();
 };
+

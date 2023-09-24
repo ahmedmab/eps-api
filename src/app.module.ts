@@ -9,6 +9,7 @@ import { UsersController } from './users/users.controller';
 import { cycleHandler } from './middleware/cycles.middleware';
 import { tableauDeServiceHandler } from './middleware/tableauDeService.middleware';
 import { classeDates } from './middleware/classeDates.middleware';
+import { journalier } from './middleware/journalier.middleware';
 
 @Module({
   imports: [
@@ -29,7 +30,8 @@ export class AppModule implements NestModule {
       .apply(classeHandler,
         tableauDeServiceHandler,
         cycleHandler,
-        classeDates
+        classeDates,
+        journalier
         )
       .exclude(
         { path: 'users', method: RequestMethod.GET },
