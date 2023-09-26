@@ -50,6 +50,7 @@ export class CreateUserDto {
     readonly etablissement: string;
     readonly prof: string;
     readonly mission: string;
+    readonly niveaux: string[];
     // @ValidateNested({ each: true })
     @Type(() => Classe)
     // @MaxLength(12, {

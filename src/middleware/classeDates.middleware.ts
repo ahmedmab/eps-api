@@ -27,10 +27,7 @@ export function classeDates(req: Request, res: Response, next: NextFunction) {
                         let cycleDates = cycle.weekDays.filter(day=> day.dayNum == classeData.dayNum)
                         classeData.cycles.push(cycleDates)
                         
-                    }
-
-                    console.log(classeData);
-                    
+                    }                    
                     classes.push(classeData)
                 }
             }

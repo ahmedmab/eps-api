@@ -87,6 +87,9 @@ export class User {
     mission: string;
 
     @Prop({ type: [], required: true })
+    niveaux: string[];
+
+    @Prop({ type: [], required: true })
     classes: Classe[];
 
     @Prop({ type: [], required: true })
