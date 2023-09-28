@@ -4,12 +4,10 @@ import { AppService } from './app.service';
 import { UsersModule } from './users/users.module';
 import { ConfigModule } from '@nestjs/config';
 import { MongooseModule } from '@nestjs/mongoose';
-import { classeHandler } from './middleware/classes.middleware';
+import { niveauHandler } from './middleware/niveaux.middleware';
 import { UsersController } from './users/users.controller';
 import { cycleHandler } from './middleware/cycles.middleware';
-import { tableauDeServiceHandler } from './middleware/tableauDeService.middleware';
 import { classeDates } from './middleware/classeDates.middleware';
-import { journalier } from './middleware/journalier.middleware';
 
 @Module({
   imports: [
@@ -27,17 +25,19 @@ import { journalier } from './middleware/journalier.middleware';
 export class AppModule implements NestModule {
   configure(consumer: MiddlewareConsumer) {
     consumer
-      .apply(classeHandler,
-        tableauDeServiceHandler,
+      .apply(niveauHandler,
         cycleHandler,
         classeDates,
-        journalier
-        )
-      .exclude(
-        { path: 'users', method: RequestMethod.GET },
-        { path: 'users/:id', method: RequestMethod.GET },
-
       )
-      .forRoutes(UsersController);
+      //   .exclude(
+      //     { path: 'users/(.*)', method: RequestMethod.GET },
+      //     { path: 'users/:id', method: RequestMethod.GET },
+      //     { path: 'users/:id', method: RequestMethod.DELETE },
+      //   )
+      // .forRoutes(UsersController);
+      .forRoutes(
+        { path: 'users', method: RequestMethod.POST },
+        { path: 'users/:id', method: RequestMethod.PUT });
+
   }
 }

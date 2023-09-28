@@ -21,6 +21,11 @@ export class UsersController {
     return this.usersService.findOne(id);
   }
 
+  @Get(':id/docs')
+  async findUserDocs(@Param('id') id: string): Promise<any> {
+    return this.usersService.findOne(id);
+  }
+
   @Patch(':id')
   async update(@Param('id') id: string, @Body() updateUserDto): Promise<any> {
     return this.usersService.update(id,);

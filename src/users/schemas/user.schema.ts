@@ -2,13 +2,13 @@ import { SchemaFactory, Prop, Schema } from '@nestjs/mongoose'
 import * as mongoose from 'mongoose';
 
 @Schema({ _id: false })
-class Time {
+class Seance {
+    @Prop()
+    dayId: number;
     @Prop()
     day: string;
     @Prop()
-    hour: string;
-    @Prop()
-    elem: string;
+    time: string;
 }
 
 @Schema({ _id: false })
@@ -19,21 +19,23 @@ class Classe {
     nvId: number;
     @Prop()
     nvName: string;
+    @Prop({ type: mongoose.Schema.Types.ObjectId, ref: 'Seance' })
+    seance1: Seance;
+    @Prop({ type: mongoose.Schema.Types.ObjectId, ref: 'Seance' })
+    seance2: Seance;
     @Prop()
-    seance: number;
-    @Prop({ type: mongoose.Schema.Types.ObjectId, ref: 'Time' })
-    time: Time
+    cycles: any[];
 }
 
-@Schema({ _id: false })
-class TableauDays {
-    @Prop()
-    name: string;
-    @Prop()
-    dayNum: number;
-    @Prop()
-    classes: Classe[];
-}
+// @Schema({ _id: false })
+// class TableauDays {
+//     @Prop()
+//     name: string;
+//     @Prop()
+//     dayId: number;
+//     @Prop()
+//     classes: Classe[];
+// }
 
 @Schema({ _id: false })
 class Cycle {
@@ -92,8 +94,8 @@ export class User {
     @Prop({ type: [], required: true })
     classes: Classe[];
 
-    @Prop({ type: [], required: true })
-    tableauDeService: TableauDays[];
+    // @Prop({ type: [], required: true })
+    // tableauDeService: TableauDays[];
 
     @Prop({ type: [], required: true })
     cycles: Cycle[];
@@ -102,6 +104,6 @@ export class User {
     place: Place;
 
 }
- 
+
 
 export const UserSchema = SchemaFactory.createForClass(User)
