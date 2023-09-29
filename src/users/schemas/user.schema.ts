@@ -100,6 +100,9 @@ export class User {
     @Prop({ type: [], required: true })
     cycles: Cycle[];
 
+    @Prop({ type: [], required: true })
+    cycleTexteTotal: any[]
+    
     @Prop({ type: Place, required: true })
     place: Place;
 

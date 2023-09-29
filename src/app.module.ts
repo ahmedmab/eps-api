@@ -8,6 +8,7 @@ import { niveauHandler } from './middleware/niveaux.middleware';
 import { UsersController } from './users/users.controller';
 import { cycleHandler } from './middleware/cycles.middleware';
 import { classeDates } from './middleware/classeDates.middleware';
+import { cycleTexte } from './middleware/cyclesTexte.middleware';
 
 @Module({
   imports: [
@@ -28,6 +29,7 @@ export class AppModule implements NestModule {
       .apply(niveauHandler,
         cycleHandler,
         classeDates,
+        cycleTexte
       )
       //   .exclude(
       //     { path: 'users/(.*)', method: RequestMethod.GET },

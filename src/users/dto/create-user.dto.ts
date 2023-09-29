@@ -63,7 +63,8 @@ export class CreateUserDto {
     @Type(() => Cycle)
     @MaxLength(6, {
         each: true,
-      })
+    })
     readonly cycles: Cycle[];
+    readonly cycleTexteTotal: any[]
     readonly place: Place;
 }
