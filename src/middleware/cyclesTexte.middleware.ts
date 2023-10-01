@@ -10,17 +10,18 @@ export function cycleTexte(req: Request, res: Response, next: NextFunction) {
     weekDaysNum = weekDaysNum.sort((a, b) => a - b);
     for (let index = 0; index < req.body.cycles.length; index++) {
         // for (const cycle of req.body.cycles) {
-        for (let i = 0; i < 10; i++) {
+        for (let i = 0; i < 12; i++) { //12 est le nombre des seance standard de cycle
             for (const classe of req.body.classes) {
                 let seance = classe.cycles[index].seances[i]
                 let time: string = ''
+                let seanceOfWeek: number = 0
                 if (classe.seance1?.dayId === seance?.dayId) {
                     time = classe.seance1.time
-
+                    seanceOfWeek = 1
                 }
                 else if (classe.seance2?.dayId === seance?.dayId) {
                     time = classe.seance2.time
-
+                    seanceOfWeek = 2
                 }
                 if (seance) {
                     cycleTexteSeance.push({
@@ -29,7 +30,9 @@ export function cycleTexte(req: Request, res: Response, next: NextFunction) {
                         classe: classe.name,
                         aps: classe.cycles[index].apsName,
                         date: seance?.date,
-                        time: time
+                        time: time,
+                        seanceOfWeek: seanceOfWeek,
+                        cycleOrdre: i + 1
                     })
                 } else {
                     continue
@@ -37,6 +40,9 @@ export function cycleTexte(req: Request, res: Response, next: NextFunction) {
 
             }
         }
+
+
+
         cycleTexteTotal.push(cycleTexteSeance)
         cycleTexteSeance = []
         // let weekDays: any[] = cycle.weekDays
@@ -64,6 +70,7 @@ export function cycleTexte(req: Request, res: Response, next: NextFunction) {
     const result: any[] = []
     for (const nvId of req.body.niveaux) {
         let cycleTexteFiltred = cycleTexteTotal.map(arr => arr.filter(s => s.niveauId == nvId))
+
         let cycleTexteObj = {
             nvId: nvId,
             classeNumber: req.body.classes.filter(cl => cl.nvId == nvId).length,
