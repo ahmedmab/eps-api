@@ -12,7 +12,19 @@ export function cycleHandler(req: Request, res: Response, next: NextFunction) {
     // sort les jour de la semaine
     weekDaysNum = weekDaysNum.sort((a, b) => a - b);
 
-    for (const cycle of req.body.cycles) {
+    //ajouter la partie avant les cycles -PPG et premier contact
+    let ppgEndDate: string = cycles[0].startDate
+    const ppg = {
+        ordre: 0,
+        apsName: "première contact et Tests physiques",
+        apsFamille: "",
+        startDate: "2023-09-02T23:00:00.000Z",
+        endDate: ppgEndDate 
+    }
+
+    cycles.unshift(ppg)
+
+    for (const cycle of cycles) {
         let weekDays: any[] = []
         // var startDate = moment(cycle.startDate).weekday(8)
         var startDate = moment(cycle.startDate)
@@ -30,7 +42,7 @@ export function cycleHandler(req: Request, res: Response, next: NextFunction) {
 
             }
             startDate = startDate.add(1, 'days');
-            
+
         }
 
         cycle.weekDays = weekDays
