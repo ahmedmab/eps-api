@@ -69,12 +69,20 @@ class Place {
 
 @Schema({ timestamps: true })
 export class User {
-
     @Prop()
+    id: string;
+
+    @Prop({ required: true })
     firstName: string;
 
-    @Prop()
+    @Prop({ required: true })
     lastName: string;
+
+    @Prop({ required: true, unique: true })
+    userName: string;
+
+    @Prop({ minlength: 4 })
+    password: string;
 
     @Prop({ required: true, default: 1 })
     status: number
@@ -102,7 +110,7 @@ export class User {
 
     @Prop({ type: [], required: true })
     cycleTexteTotal: any[]
-    
+
     @Prop({ type: Place, required: true })
     place: Place;
 

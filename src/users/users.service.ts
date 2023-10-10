@@ -1,12 +1,14 @@
-import { Injectable } from '@nestjs/common';
+import { Injectable, forwardRef, Inject, Logger } from '@nestjs/common';
 import { User } from './schemas/user.schema';
 import { InjectModel } from '@nestjs/mongoose';
 import * as mongoose from 'mongoose';
 
 @Injectable()
 export class UsersService {
+  logger: Logger;
   constructor(@InjectModel(User.name)
-  private userModel: mongoose.Model<User>) { }
+  private userModel: mongoose.Model<User>) { 
+    }
 
   async create(user: User): Promise<User> {
     const res = await this.userModel.create(user)
@@ -18,9 +20,13 @@ export class UsersService {
     return users
   }
 
-  async findOne(id: string): Promise<User> {
+  async findById(id: string): Promise<User> {
     const user = await this.userModel.findById(id)
     return user;
+  }
+
+  async findOne(query: any): Promise<any> {
+    return await this.userModel.findOne(query).select('+password');
   }
 
   async update(id: string) {

@@ -16,10 +16,10 @@ export function cycleHandler(req: Request, res: Response, next: NextFunction) {
     let ppgEndDate: string = cycles[0].startDate
     const ppg = {
         ordre: 0,
-        apsName: "première contact et Tests physiques",
+        apsName: "",
         apsFamille: "",
         startDate: "2023-09-02T23:00:00.000Z",
-        endDate: ppgEndDate 
+        endDate: moment(ppgEndDate).subtract(2, 'd')
     }
 
     cycles.unshift(ppg)

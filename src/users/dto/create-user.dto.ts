@@ -44,10 +44,13 @@ class Cycle {
     readonly weeks: any[];
 
 }
-
+  
 export class CreateUserDto {
+    readonly id: string;
     readonly firstName: string;
     readonly lastName: string;
+    readonly userName: string;
+    readonly password: string;
     readonly status: number;
     readonly etablissement: string;
     readonly prof: string;
