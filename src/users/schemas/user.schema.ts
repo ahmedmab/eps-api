@@ -79,10 +79,10 @@ export class User {
     lastName: string;
 
     @Prop({ required: true, unique: true })
-    userName: string;
+    uid: string;
 
-    @Prop({ minlength: 4 })
-    password: string;
+    @Prop({ required: true })
+    phone: string;
 
     @Prop({ required: true, default: 1 })
     status: number

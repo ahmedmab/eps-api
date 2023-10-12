@@ -1,4 +1,4 @@
-import { Controller, Get, Post, Body, Patch, Param, Delete, Request, ConflictException, Logger } from '@nestjs/common';
+import { Controller, Get, Post, Body, Patch, Param, Delete, Request, ConflictException, Logger, Query } from '@nestjs/common';
 import { UsersService } from './users.service';
 import { CreateUserDto } from './dto/create-user.dto';
 
@@ -13,7 +13,7 @@ export class UsersController {
   async create(@Request() user: CreateUserDto): Promise<any> {
     const newUser = user;
     try {
-      const query = { userName: newUser.userName };
+      const query = { phone: newUser.phone };
       const isUser = await this.usersService.findOne(query);
       if (isUser) throw new ConflictException('User Already Exist');
       const user = await this.usersService.create(newUser);
@@ -24,24 +24,19 @@ export class UsersController {
     }
   }
 
-  // @Post()
-  // async create(@Body() user: CreateUserDto): Promise<any> {            
-  //   return this.usersService.create(user);
-  // }
-
   @Get()
   async findAll(): Promise<any[]> {
     return this.usersService.findAll();
   }
 
   @Get(':id')
-  async findOne(@Param('id') id: string): Promise<any> {
+  async findUserById(@Param('id') id: string): Promise<any> {
     return this.usersService.findById(id);
   }
 
-  @Get(':id/docs')
-  async findUserDocs(@Param('id') id: string): Promise<any> {
-    return this.usersService.findOne(id);
+  @Get()
+  async findUser(@Query() query): Promise<any> {
+    return this.usersService.findOne(query);
   }
 
   @Patch(':id')
