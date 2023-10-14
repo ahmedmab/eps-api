@@ -72,16 +72,16 @@ export class User {
     @Prop()
     id: string;
 
-    @Prop({ required: true })
+    @Prop()
     firstName: string;
 
-    @Prop({ required: true })
+    @Prop()
     lastName: string;
 
     @Prop({ required: true, unique: true })
     uid: string;
 
-    @Prop({ required: true })
+    @Prop({ required: true, unique: true })
     phone: string;
 
     @Prop({ required: true, default: 1 })
@@ -96,10 +96,10 @@ export class User {
     @Prop()
     mission: string;
 
-    @Prop({ type: [], required: true })
+    @Prop({ type: [] })
     niveaux: string[];
 
-    @Prop({ type: [], required: true })
+    @Prop({ type: [] })
     classes: Classe[];
 
     // @Prop({ type: [], required: true })
