@@ -27,16 +27,6 @@ class Classe {
     cycles: any[];
 }
 
-// @Schema({ _id: false })
-// class TableauDays {
-//     @Prop()
-//     name: string;
-//     @Prop()
-//     dayId: number;
-//     @Prop()
-//     classes: Classe[];
-// }
-
 @Schema({ _id: false })
 class Cycle {
     @Prop()
@@ -81,7 +71,7 @@ export class User {
     @Prop({ required: true, unique: true })
     uid: string;
 
-    @Prop({ required: true })
+    @Prop({ required: true, unique: true })
     phone: string;
 
     @Prop({ required: true, default: 1 })
@@ -112,9 +102,9 @@ export class User {
     cycleTexteTotal: any[]
 
     @Prop({ type: Place, required: true })
-    place: Place;
+    place: Place; 
 
-}
+} 
 
 
 export const UserSchema = SchemaFactory.createForClass(User)
