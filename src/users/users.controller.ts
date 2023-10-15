@@ -34,14 +34,14 @@ export class UsersController {
     return this.usersService.findAll();
   }
 
+  @Get('find')
+  async findUser(@Query('phone') query: any): Promise<any> {
+    return this.usersService.findOne({ phone: (`+${query}`).replace(/\s/g, '') });
+  }
+
   @Get(':id')
   async findUserById(@Param('id') id: string): Promise<any> {
     return this.usersService.findById(id);
-  }
-
-  @Get()
-  async findUser(@Query() query: any): Promise<any> {
-    return this.usersService.findOne(query);
   }
 
   // @Patch(':id')

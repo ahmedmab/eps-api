@@ -25,8 +25,9 @@ export class UsersService {
     return user;
   }
 
-  async findOne(query: any): Promise<any> {
-    return await this.userModel.findOne(query).exec();
+  async findOne(query: any): Promise<any> {    
+    const user = await this.userModel.findOne(query).exec();
+    return user
   }
 
   async update(id: string, upUser: User) {
