@@ -38,7 +38,7 @@ export class AppModule implements NestModule {
       //   )
       // .forRoutes(UsersController);
       .forRoutes(
-        { path: 'users', method: RequestMethod.POST },
+        { path: 'users/create', method: RequestMethod.POST },
         { path: 'users/:id', method: RequestMethod.PUT });
 
   }

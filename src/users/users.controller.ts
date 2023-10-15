@@ -1,4 +1,4 @@
-import { Controller, Get, Post, Body, Patch, Param, Delete, Request, ConflictException, Logger, Query } from '@nestjs/common';
+import { Controller, Get, Post, Body, Patch, Param, Delete, Request, ConflictException, Logger, Query, HttpCode, Header } from '@nestjs/common';
 import { UsersService } from './users.service';
 import { CreateUserDto } from './dto/create-user.dto';
 
@@ -10,7 +10,8 @@ export class UsersController {
   }
 
   @Post('create')
-  async create(@Request() user: CreateUserDto): Promise<any> {
+  @Header('Cache-Control', 'none')
+  async create(@Body() user: CreateUserDto): Promise<any> {
     const newUser = user;
     try {
       const query = { phone: newUser.phone };
