@@ -1,4 +1,4 @@
-import { Controller, Get, Post, Body, Patch, Param, Delete, Request, ConflictException, Logger, Query, HttpCode, Header } from '@nestjs/common';
+import { Controller, Get, Post, Body, Patch, Param, Delete, Request, ConflictException, Logger, Query, HttpCode, Header, Put } from '@nestjs/common';
 import { UsersService } from './users.service';
 import { CreateUserDto } from './dto/create-user.dto';
 
@@ -40,7 +40,7 @@ export class UsersController {
   }
 
   @Get()
-  async findUser(@Query() query): Promise<any> {
+  async findUser(@Query() query: any): Promise<any> {
     return this.usersService.findOne(query);
   }
 
@@ -48,6 +48,10 @@ export class UsersController {
   // async update(@Param('id') id: string, @Body() updateUserDto): Promise<any> {
   //   return this.usersService.update(id,);
   // }
+  @Put(':id')
+  async update(@Param('id') id: string, @Body() user): Promise<any> {
+    return this.usersService.update(id, user);
+  }
 
   @Delete(':id')
   async remove(@Param('id') id: string): Promise<any> {

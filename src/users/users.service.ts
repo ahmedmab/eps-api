@@ -26,7 +26,7 @@ export class UsersService {
   }
 
   async findOne(query: any): Promise<any> {
-    return await this.userModel.findOne(query).select('phone');
+    return await this.userModel.findOne(query).exec();
   }
 
   async update(id: string, upUser: User) {
