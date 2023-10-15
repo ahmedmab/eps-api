@@ -19,14 +19,14 @@ class Classe {
 
 }
 
-class Place {
-    readonly name: string;
-    readonly city: string;
-    readonly province: string;
-    readonly region: string;
-    readonly country: string;
+// class Place {
+//     readonly name: string;
+//     readonly city: string;
+//     readonly province: string;
+//     readonly region: string;
+//     readonly country: string;
 
-}
+// }
 
 // class TableauDays {
 //     readonly name: string;
@@ -44,7 +44,7 @@ class Cycle {
     readonly weeks: any[];
 
 }
-  
+
 export class CreateUserDto {
     readonly id: string;
     readonly firstName: string;
@@ -52,6 +52,8 @@ export class CreateUserDto {
     readonly uid: string;
     readonly phone: string;
     readonly status: number;
+    readonly role: 'standard' | 'admin' | 'owner';
+    readonly city: string;
     readonly etablissement: string;
     readonly prof: string;
     readonly mission: string;
@@ -69,5 +71,5 @@ export class CreateUserDto {
     })
     readonly cycles: Cycle[];
     readonly cycleTexteTotal: any[]
-    readonly place: Place;
+    // readonly place: Place;
 }

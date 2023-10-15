@@ -43,19 +43,19 @@ class Cycle {
     weeks: any[];
 }
 
-@Schema({ _id: false })
-class Place {
-    @Prop()
-    name: string;
-    @Prop()
-    city: string;
-    @Prop()
-    province: string;
-    @Prop()
-    region: string;
-    @Prop()
-    country: string;
-}
+// @Schema({ _id: false })
+// class Place {
+//     @Prop()
+//     name: string;
+//     @Prop()
+//     city: string;
+//     @Prop()
+//     province: string;
+//     @Prop()
+//     region: string;
+//     @Prop()
+//     country: string;
+// }
 
 @Schema({ timestamps: true })
 export class User {
@@ -76,6 +76,12 @@ export class User {
 
     @Prop({ required: true, default: 1 })
     status: number
+
+    @Prop({ required: true, default: 'standard' })
+    role: 'standard' | 'admin' | 'owner'
+
+    @Prop()
+    city: string;
 
     @Prop()
     etablissement: string;
@@ -101,8 +107,8 @@ export class User {
     @Prop({ type: [], required: true })
     cycleTexteTotal: any[]
 
-    @Prop({ type: Place, required: true })
-    place: Place; 
+    // @Prop({ type: Place, required: true })
+    // place: Place; 
 
 } 
 
