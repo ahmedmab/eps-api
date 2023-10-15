@@ -29,8 +29,8 @@ export class UsersService {
     return await this.userModel.findOne(query).select('phone');
   }
 
-  async update(id: string) {
-    const user = await this.userModel.findByIdAndUpdate(id)
+  async update(id: string, upUser: User) {
+    const user = await this.userModel.findByIdAndUpdate(id, upUser)
     return user;
   }
 

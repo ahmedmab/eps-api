@@ -16,7 +16,11 @@ export class UsersController {
     try {
       const query = { phone: newUser.phone };
       const isUser = await this.usersService.findOne(query);
-      if (isUser) throw new ConflictException('User Already Exist');
+      if (isUser) {
+        return this.usersService.update(isUser._id, newUser)
+        // throw new ConflictException('User Already Exist'); 
+      }
+
       const user = await this.usersService.create(newUser);
       return user;
     } catch (err) {
@@ -40,10 +44,10 @@ export class UsersController {
     return this.usersService.findOne(query);
   }
 
-  @Patch(':id')
-  async update(@Param('id') id: string, @Body() updateUserDto): Promise<any> {
-    return this.usersService.update(id,);
-  }
+  // @Patch(':id')
+  // async update(@Param('id') id: string, @Body() updateUserDto): Promise<any> {
+  //   return this.usersService.update(id,);
+  // }
 
   @Delete(':id')
   async remove(@Param('id') id: string): Promise<any> {
