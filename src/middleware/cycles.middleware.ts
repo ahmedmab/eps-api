@@ -19,11 +19,11 @@ export function cycleHandler(req: Request, res: Response, next: NextFunction) {
         apsName: "",
         apsFamille: "",
         startDate: "2023-09-02T23:00:00.000Z",
-        endDate: moment(ppgEndDate).subtract(2, 'd')
+        endDate: new Date(moment(ppgEndDate).subtract(2, 'd').toString())
     }
 
-    cycles.unshift(ppg)
-
+    cycles = [ppg, ...cycles]
+    
     for (const cycle of cycles) {
         let weekDays: any[] = []
         // var startDate = moment(cycle.startDate).weekday(8)

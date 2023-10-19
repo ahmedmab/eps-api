@@ -10,7 +10,7 @@ export async function classeDates(req: Request, res: Response, next: NextFunctio
         let cycleData: any
         for await (const cycle of cycles) {
 
-            let seances: any[] = await cycle.weekDays.filter((s: { dayId: any; }) => s.dayId == classe.seance1.dayId || s.dayId == classe.seance2.dayId)
+            let seances: any[] = await cycle.weekDays?.filter((s: { dayId: any; }) => s.dayId == classe.seance1.dayId || s.dayId == classe.seance2.dayId)
             cycleData = {
                 classe: classe.name,
                 nvId: classe.nvId,
