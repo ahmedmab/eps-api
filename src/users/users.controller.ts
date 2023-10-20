@@ -24,7 +24,7 @@ export class UsersController {
       const user = await this.usersService.create(newUser);
       return user;
     } catch (err) {
-      this.logger.error('Something went wrong in signup:', err);
+      this.logger.error('Something went wrong in Profil creation:', err);
       throw err;
     }
   }

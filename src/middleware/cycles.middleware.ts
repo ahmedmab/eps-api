@@ -22,8 +22,10 @@ export function cycleHandler(req: Request, res: Response, next: NextFunction) {
         endDate: new Date(moment(ppgEndDate).subtract(2, 'd').toString())
     }
 
-    cycles = [ppg, ...cycles]
-    
+    if (!moment(cycles[0].startDate).isSameOrBefore(ppg.startDate)) {
+        cycles = [ppg, ...cycles]
+    }
+
     for (const cycle of cycles) {
         let weekDays: any[] = []
         // var startDate = moment(cycle.startDate).weekday(8)
