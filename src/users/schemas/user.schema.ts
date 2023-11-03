@@ -25,6 +25,8 @@ class Classe {
     seance2: Seance;
     @Prop()
     cycles: any[];
+    @Prop()
+    students: any[];
 }
 
 @Schema({ _id: false })
@@ -110,7 +112,7 @@ export class User {
     // @Prop({ type: Place, required: true })
     // place: Place; 
 
-} 
+}
 
 
 export const UserSchema = SchemaFactory.createForClass(User)

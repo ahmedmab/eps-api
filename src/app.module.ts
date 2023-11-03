@@ -5,7 +5,6 @@ import { UsersModule } from './users/users.module';
 import { ConfigModule } from '@nestjs/config';
 import { MongooseModule } from '@nestjs/mongoose';
 import { niveauHandler } from './middleware/niveaux.middleware';
-import { UsersController } from './users/users.controller';
 import { cycleHandler } from './middleware/cycles.middleware';
 import { classeDates } from './middleware/classeDates.middleware';
 import { cycleTexte } from './middleware/cyclesTexte.middleware';

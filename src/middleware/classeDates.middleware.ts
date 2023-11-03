@@ -26,8 +26,7 @@ export async function classeDates(req: Request, res: Response, next: NextFunctio
 
         }
     }
-
-
+    
     req.body.classes = classes
     next();
 };

@@ -16,7 +16,7 @@ class Classe {
     @Type(() => Seance)
     readonly seance2: Seance;
     readonly cycles: any[];
-
+    readonly students: any[];
 }
 
 // class Place {

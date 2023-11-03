@@ -6,6 +6,8 @@ export function niveauHandler(req: Request, res: Response, next: NextFunction) {
     classes.sort((a, b) => a.nvId - b.nvId);
     for (const classe of classes) {
         niveaux.push(classe.nvId)
+        console.log(classe.students[0]);
+        
     }
     req.body.classes = classes
     req.body.niveaux = Array.from(new Set(niveaux))

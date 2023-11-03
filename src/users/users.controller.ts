@@ -49,7 +49,7 @@ export class UsersController {
   //   return this.usersService.update(id,);
   // }
   @Put(':id')
-  async update(@Param('id') id: string, @Body() user): Promise<any> {
+  async update(@Param('id') id: string, @Body() user: CreateUserDto): Promise<any> {
     return this.usersService.update(id, user);
   }
 
