@@ -77,7 +77,10 @@ export class User {
     phone: string;
 
     @Prop({ required: true, default: 1 })
-    status: number
+    status: number;
+
+    @Prop()
+    activationDate: Date;
 
     @Prop({ required: true, default: 'standard' })
     role: 'standard' | 'admin' | 'owner'

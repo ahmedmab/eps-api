@@ -52,6 +52,7 @@ export class CreateUserDto {
     readonly uid: string;
     readonly phone: string;
     readonly status: number;
+    readonly activationDate: Date;
     readonly role: 'standard' | 'admin' | 'owner';
     readonly city: string;
     readonly etablissement: string;
