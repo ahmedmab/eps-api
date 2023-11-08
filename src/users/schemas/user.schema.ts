@@ -76,6 +76,9 @@ export class User {
     @Prop({ required: true, unique: true })
     phone: string;
 
+    @Prop({ unique: true })
+    email: string;
+
     @Prop({ required: true, default: 1 })
     status: number;
 
@@ -87,6 +90,12 @@ export class User {
 
     @Prop()
     city: string;
+
+    @Prop()
+    academie: string;
+
+    @Prop()
+    direction: string;
 
     @Prop()
     etablissement: string;

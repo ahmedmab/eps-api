@@ -51,10 +51,13 @@ export class CreateUserDto {
     readonly lastName: string;
     readonly uid: string;
     readonly phone: string;
+    readonly email: string;
     readonly status: number;
     readonly activationDate: Date;
     readonly role: 'standard' | 'admin' | 'owner';
     readonly city: string;
+    readonly academie: string;
+    readonly direction: string;
     readonly etablissement: string;
     readonly prof: string;
     readonly mission: string;
