@@ -8,6 +8,7 @@ import { niveauHandler } from './middleware/niveaux.middleware';
 import { cycleHandler } from './middleware/cycles.middleware';
 import { classeDates } from './middleware/classeDates.middleware';
 import { cycleTexte } from './middleware/cyclesTexte.middleware';
+import { ApsModule } from './aps/aps.module';
 
 @Module({
   imports: [
@@ -16,7 +17,9 @@ import { cycleTexte } from './middleware/cyclesTexte.middleware';
       isGlobal: true
     }),
     MongooseModule.forRoot(process.env.DB_URL),
+    MongooseModule.forRoot(process.env.DB_APS_URL, { connectionName: 'aps' }),
     UsersModule,
+    ApsModule
   ],
   controllers: [AppController],
   providers: [AppService],

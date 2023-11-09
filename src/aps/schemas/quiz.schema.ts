@@ -1,13 +1,25 @@
 import { SchemaFactory, Prop, Schema } from '@nestjs/mongoose'
-import * as mongoose from 'mongoose';
 
-@Schema()
-class Quiz {
+@Schema({ _id: false })
+class Reponse {
     @Prop()
-    aps: string;
+    id: number;
+    @Prop()
+    text: string;
+    @Prop()
+    isTrue: boolean;
 }
 
+export @Schema()
+class Quiz {
+    @Prop({ required: true })
+    aps: string;
 
+    @Prop({ required: true })
+    question: string;
 
+    @Prop({ type: [], required: true })
+    reponses: Reponse[];
+}
 
 export const QuizSchema = SchemaFactory.createForClass(Quiz)
