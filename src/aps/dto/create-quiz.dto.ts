@@ -7,7 +7,9 @@ class Reponse {
 }
 
 export class CreateQuizDto {
-    readonly aps: string;
+    readonly lang: 'fr' | 'ar';
+    readonly apsId: number;
+    readonly apsName: string;
     readonly question: string;
     @Type(() => Reponse)
     readonly reponses: Reponse[];

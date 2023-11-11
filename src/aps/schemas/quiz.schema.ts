@@ -12,8 +12,14 @@ class Reponse {
 
 export @Schema()
 class Quiz {
+    @Prop({ required: true, default: 'fr' })
+    lang: 'fr' | 'ar';
+
     @Prop({ required: true })
-    aps: string;
+    apsId: number;
+
+    @Prop({ required: true })
+    apsName: string;
 
     @Prop({ required: true })
     question: string;
