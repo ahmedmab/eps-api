@@ -10,6 +10,7 @@ export class CreateQuizDto {
     readonly lang: 'fr' | 'ar';
     readonly apsId: number;
     readonly apsName: string;
+    readonly difficulty: number;
     readonly question: string;
     @Type(() => Reponse)
     readonly reponses: Reponse[];

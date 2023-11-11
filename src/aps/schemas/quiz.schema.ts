@@ -22,6 +22,9 @@ class Quiz {
     apsName: string;
 
     @Prop({ required: true })
+    difficulty: number;
+
+    @Prop({ required: true })
     question: string;
 
     @Prop({ type: [], required: true })
