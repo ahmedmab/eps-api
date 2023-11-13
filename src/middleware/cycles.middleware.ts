@@ -30,7 +30,7 @@ export function cycleHandler(req: Request, res: Response, next: NextFunction) {
         let weekDays: any[] = []
         // var startDate = moment(cycle.startDate).weekday(8)
         var startDate = moment(cycle.startDate)
-        while (startDate.isSameOrBefore(new Date(cycle.endDate))) {
+        while (startDate.isBefore(new Date(cycle.endDate))) {
             let dayData: any
             if (startDate.format('ddd') !== 'Sun' && weekDaysNum.includes(startDate.day())) {
                 dayData = {

@@ -2,7 +2,6 @@ import { Request, Response, NextFunction } from 'express';
 
 export function cycleTexte(req: Request, res: Response, next: NextFunction) {
     const days: string[] = ['', 'Lundi', 'Mardi', 'Mercredi', 'Jeudi', 'Vendredi', 'Samedi']
-    let cycles: any[] = req.body.cycles
     let weekDaysNum: number[] = []
     let cycleTexteSeance: any[] = []
     let cycleTexteTotal: any[] = []
