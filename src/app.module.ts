@@ -9,6 +9,7 @@ import { cycleHandler } from './middleware/cycles.middleware';
 import { classeDates } from './middleware/classeDates.middleware';
 import { cycleTexte } from './middleware/cyclesTexte.middleware';
 import { ApsModule } from './aps/aps.module';
+import { DataModule } from './data/data.module';
 
 @Module({
   imports: [
@@ -19,7 +20,8 @@ import { ApsModule } from './aps/aps.module';
     MongooseModule.forRoot(process.env.DB_URL),
     MongooseModule.forRoot(process.env.DB_APS_URL, { connectionName: 'aps' }),
     UsersModule,
-    ApsModule
+    ApsModule,
+    DataModule
   ],
   controllers: [AppController],
   providers: [AppService],
