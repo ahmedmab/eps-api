@@ -50,7 +50,6 @@ class Cycle {
 //     @Prop()
 //     name: string;
 //     @Prop()
-//     city: string;
 //     @Prop()
 //     province: string;
 //     @Prop()
@@ -89,10 +88,13 @@ export class User {
     role: 'standard' | 'admin' | 'owner'
 
     @Prop()
-    city: string;
+    academieId: number;
 
     @Prop()
     academie: string;
+
+    @Prop()
+    directionId: number;
 
     @Prop()
     direction: string;

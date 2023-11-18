@@ -21,7 +21,6 @@ class Classe {
 
 // class Place {
 //     readonly name: string;
-//     readonly city: string;
 //     readonly province: string;
 //     readonly region: string;
 //     readonly country: string;
@@ -55,7 +54,8 @@ export class CreateUserDto {
     readonly status: number;
     readonly activationDate: Date;
     readonly role: 'standard' | 'admin' | 'owner';
-    readonly city: string;
+    readonly academieId: number;
+    readonly directionId: number;
     readonly academie: string;
     readonly direction: string;
     readonly etablissement: string;
