@@ -5,6 +5,8 @@ class Seance {
     readonly dayId: number;
     readonly day: string;
     readonly time: string;
+    readonly seanceOfDay: number;
+
 }
 
 class Classe {

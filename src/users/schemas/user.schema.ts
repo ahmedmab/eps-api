@@ -9,6 +9,8 @@ class Seance {
     day: string;
     @Prop()
     time: string;
+    @Prop()
+    seanceOfDay: number;
 }
 
 @Schema({ _id: false })
