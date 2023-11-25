@@ -1,4 +1,4 @@
-import { Controller, Get, Post, Body, Patch, Param, Delete, Logger } from '@nestjs/common';
+import { Controller, Get, Post, Body, Patch, Param, Delete, Logger, Query } from '@nestjs/common';
 import { CreateQuizDto } from 'src/aps/dto/create-quiz.dto';
 import { UpdateQuizDto } from 'src/aps/dto/update-quiz.dto';
 import { QuizService } from 'src/aps/services/quiz.service';
@@ -9,7 +9,7 @@ export class QuizController {
   logger: Logger;
   constructor(private readonly quizService: QuizService) {
     this.logger = new Logger(QuizController.name);
-   }
+  }
 
   @Post()
   create(@Body() createQuizDto: CreateQuizDto) {
@@ -17,8 +17,8 @@ export class QuizController {
   }
 
   @Get()
-  findAll() {
-    return this.quizService.findAll();
+  async findByAps(@Query('apsId') apsId: number): Promise<any> {
+    return this.quizService.findByAps(apsId);
   }
 
   @Get(':id')

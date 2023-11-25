@@ -20,12 +20,21 @@ export class QuizService {
     return users
   }
 
+  async findByAps(apsId: number): Promise<Quiz[]> {
+    if (!apsId) {
+      const users = await this.quizModel.find()
+      return users
+    }
+    const users = await this.quizModel.find({ apsId: apsId })
+    return users
+  }
+
   async findById(id: string): Promise<Quiz> {
     const user = await this.quizModel.findById(id)
     return user;
   }
 
-  async findOne(query: any): Promise<any> {    
+  async findOne(query: any): Promise<any> {
     const user = await this.quizModel.findOne(query).exec();
     return user
   }
