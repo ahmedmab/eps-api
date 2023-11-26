@@ -1,4 +1,4 @@
-import { Controller, Get, Post, Body, Patch, Param, Delete, Logger, Query } from '@nestjs/common';
+import { Controller, Get, Post, Body, Patch, Param, Delete, Logger, Query, Put } from '@nestjs/common';
 import { CreateQuizDto } from 'src/aps/dto/create-quiz.dto';
 import { UpdateQuizDto } from 'src/aps/dto/update-quiz.dto';
 import { QuizService } from 'src/aps/services/quiz.service';
@@ -26,8 +26,8 @@ export class QuizController {
     return this.quizService.findOne(+id);
   }
 
-  @Patch(':id')
-  update(@Param('id') id: string, @Body() updateQuizDto: UpdateQuizDto) {
+  @Put(':id')
+  async update(@Param('id') id: string, @Body() updateQuizDto: UpdateQuizDto): Promise<any> {
     return this.quizService.update(id, updateQuizDto);
   }
 

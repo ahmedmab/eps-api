@@ -16,10 +16,16 @@ class Quiz {
     lang: 'fr' | 'ar';
 
     @Prop({ required: true })
-    apsId: number;
+    apsName: string;
 
     @Prop({ required: true })
-    apsName: string;
+    createdBy: string;
+
+    @Prop({ required: true })
+    apsId: number;
+
+    @Prop()
+    updatedBy: string;
 
     @Prop({ required: true })
     difficulty: number;

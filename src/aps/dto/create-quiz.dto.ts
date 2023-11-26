@@ -8,6 +8,8 @@ class Reponse {
 
 export class CreateQuizDto {
     readonly lang: 'fr' | 'ar';
+    readonly createdBy: string;
+    readonly updatedBy: string;
     readonly apsId: number;
     readonly apsName: string;
     readonly difficulty: number;
