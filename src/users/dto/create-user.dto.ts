@@ -38,6 +38,7 @@ class Classe {
 
 class Cycle {
     readonly ordre: number;
+    readonly apsId: number;
     readonly apsName: string;
     readonly apsFamille: string;
     readonly startDate: string;

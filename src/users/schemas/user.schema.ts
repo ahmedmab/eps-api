@@ -36,6 +36,8 @@ class Cycle {
     @Prop()
     ordre: number;
     @Prop()
+    apsId: number;
+    @Prop()
     apsName: string;
     @Prop()
     apsFamille: string;
