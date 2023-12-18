@@ -15,5 +15,5 @@ export class CreateQuizDto {
     readonly difficulty: number;
     readonly question: string;
     @Type(() => Reponse)
-    readonly reponses: Reponse[];
+    readonly reponses: Reponse[]; 
 }
