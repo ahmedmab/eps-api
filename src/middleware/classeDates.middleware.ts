@@ -1,16 +1,15 @@
 import { Request, Response, NextFunction } from 'express';
-import * as moment from "moment";
 
 export async function classeDates(req: Request, res: Response, next: NextFunction) {
-    const days: string[] = ['', 'Lundi', 'Mardi', 'Mercredi', 'Jeudi', 'Vendredi', 'Samedi']
-    let classes: any[] = req.body.classes
-    let cycles: any[] = req.body.cycles
+    // const days: string[] = ['', 'Lundi', 'Mardi', 'Mercredi', 'Jeudi', 'Vendredi', 'Samedi']
+    const classes: any[] = req.body.classes
+    const cycles: any[] = req.body.cycles
 
     for (const classe of classes) {
         let cycleData: any
         for await (const cycle of cycles) {
 
-            let seances: any[] = await cycle.weekDays?.filter((s: { dayId: any; }) => s.dayId == classe.seance1.dayId || s.dayId == classe.seance2.dayId)
+            const seances: any[] = await cycle.weekDays?.filter((s: { dayId: any; }) => s.dayId == classe.seance1.dayId || s.dayId == classe.seance2.dayId)
             cycleData = {
                 classe: classe.name,
                 nvId: classe.nvId,

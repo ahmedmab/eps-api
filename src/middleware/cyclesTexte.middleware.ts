@@ -1,17 +1,17 @@
 import { Request, Response, NextFunction } from 'express';
 
 export function cycleTexte(req: Request, res: Response, next: NextFunction) {
-    const days: string[] = ['', 'Lundi', 'Mardi', 'Mercredi', 'Jeudi', 'Vendredi', 'Samedi']
-    let weekDaysNum: number[] = []
+    // const days: string[] = ['', 'Lundi', 'Mardi', 'Mercredi', 'Jeudi', 'Vendredi', 'Samedi']
+    // let weekDaysNum: number[] = []
     let cycleTexteSeance: any[] = []
-    let cycleTexteTotal: any[] = []
+    const cycleTexteTotal: any[] = []
     // sort les jour de la semaine
-    weekDaysNum = weekDaysNum.sort((a, b) => a - b);
+    // weekDaysNum = weekDaysNum.sort((a, b) => a - b);
     for (let index = 0; index < req.body.cycles.length; index++) {
         // for (const cycle of req.body.cycles) {
         for (let i = 0; i < 12; i++) { //12 est le nombre des seance standard de cycle
             for (const classe of req.body.classes) {
-                let seance = classe.cycles[index].seances[i]
+                const seance = classe.cycles[index].seances[i]
                 let time: string = ''
                 let seanceOfWeek: number = 0
                 if (classe.seance1?.dayId === seance?.dayId) {
@@ -68,9 +68,9 @@ export function cycleTexte(req: Request, res: Response, next: NextFunction) {
     }
     const result: any[] = []
     for (const nvId of req.body.niveaux) {
-        let cycleTexteFiltred = cycleTexteTotal.map(arr => arr.filter(s => s.niveauId == nvId))
+        const cycleTexteFiltred = cycleTexteTotal.map(arr => arr.filter(s => s.niveauId == nvId))
 
-        let cycleTexteObj = {
+        const cycleTexteObj = {
             nvId: nvId,
             classeNumber: req.body.classes.filter(cl => cl.nvId == nvId).length,
             seances: cycleTexteFiltred

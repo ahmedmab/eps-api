@@ -13,7 +13,7 @@ export function cycleHandler(req: Request, res: Response, next: NextFunction) {
     weekDaysNum = weekDaysNum.sort((a, b) => a - b);
 
     //ajouter la partie avant les cycles -PPG et premier contact
-    let ppgEndDate: string = cycles[0].startDate
+    const ppgEndDate: string = cycles[0].startDate
     const ppg = {
         ordre: 0,
         apsName: "",
@@ -27,9 +27,9 @@ export function cycleHandler(req: Request, res: Response, next: NextFunction) {
     }
 
     for (const cycle of cycles) {
-        let weekDays: any[] = []
+        const weekDays: any[] = []
         // var startDate = moment(cycle.startDate).weekday(8)
-        var startDate = moment(cycle.startDate)
+        let startDate = moment(cycle.startDate)
         while (startDate.isBefore(new Date(cycle.endDate))) {
             let dayData: any
             if (startDate.format('ddd') !== 'Sun' && weekDaysNum.includes(startDate.day())) {

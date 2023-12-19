@@ -1,4 +1,4 @@
-import { Body, Controller, Delete, Get, Header, Param, Post, Query } from '@nestjs/common';
+import { Body, Controller, Delete, Get, Header, Param, Post, Put, Query } from '@nestjs/common';
 import { DataService } from './data.service';
 import { CreateVacanceDto } from './dto/create-vacance.dto';
 
@@ -32,6 +32,11 @@ export class DataController {
     } catch (err) {
       throw err;
     }
+  }
+
+  @Put(':id')
+  async update(@Param('id') id: string, @Body() vacance: CreateVacanceDto): Promise<any> {
+    return this.dataService.update(id, vacance);
   }
 
   @Get('vacances')

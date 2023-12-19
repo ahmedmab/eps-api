@@ -8,6 +8,8 @@ class Vacance {
     endDate: string;
     @Prop()
     text: string;
+    @Prop()
+    daysNumber: number;
 }
 
 export const VacanceSchema = SchemaFactory.createForClass(Vacance)

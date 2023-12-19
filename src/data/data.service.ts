@@ -4,6 +4,7 @@ import mongoose from 'mongoose';
 import { InjectModel } from '@nestjs/mongoose';
 import { Direction } from './schemas/direction.schema';
 import { Vacance } from './schemas/vacance.schema';
+import * as moment from "moment";
 
 @Injectable()
 export class DataService {
@@ -12,7 +13,7 @@ export class DataService {
     @InjectModel(Direction.name)
     private directionModel: mongoose.Model<Direction>,
     @InjectModel(Vacance.name) private vacanceModel: mongoose.Model<Vacance>,
-  ) {}
+  ) { }
 
   async findAllAcademie(): Promise<Academie[]> {
     const academies = await this.academieModel.find();
@@ -30,9 +31,19 @@ export class DataService {
   }
 
   // Vacances
-  async create(user: Vacance): Promise<Vacance> {
-    const res = await this.vacanceModel.create(user)
+  async create(vacance: Vacance): Promise<Vacance> {
+    const starDate = moment(vacance.startDate);
+    const endDate = moment(vacance.endDate);
+    vacance.startDate = starDate.format('DD/MM/YYYY')
+    vacance.endDate = endDate.format('DD/MM/YYYY')
+    vacance.daysNumber = endDate.diff(starDate, 'days') + 1
+    const res = await this.vacanceModel.create(vacance)
     return res
+  }
+
+  async update(id: string, upUser: Vacance) {
+    const vacance = await this.vacanceModel.findByIdAndUpdate(id, upUser)
+    return vacance;
   }
 
   async findAllVacances(): Promise<Vacance[]> {

@@ -1,4 +1,4 @@
-import { Injectable, forwardRef, Inject, Logger } from '@nestjs/common';
+import { Injectable, Logger } from '@nestjs/common';
 import { User } from './schemas/user.schema';
 import { InjectModel } from '@nestjs/mongoose';
 import * as mongoose from 'mongoose';
