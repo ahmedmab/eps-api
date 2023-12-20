@@ -33,6 +33,7 @@ export function cycleTexte(req: Request, res: Response, next: NextFunction) {
                         seanceOfWeek: seanceOfWeek,
                         cycleOrdre: i + 1
                     })
+
                 } else {
                     continue
                 }
@@ -44,6 +45,7 @@ export function cycleTexte(req: Request, res: Response, next: NextFunction) {
 
         cycleTexteTotal.push(cycleTexteSeance)
         cycleTexteSeance = []
+      
         // let weekDays: any[] = cycle.weekDays
         // for (const day of weekDays) {
         //     day.classes = []
@@ -66,6 +68,7 @@ export function cycleTexte(req: Request, res: Response, next: NextFunction) {
         // cycle.weekDays = weekDays
 
     }
+
     const result: any[] = []
     for (const nvId of req.body.niveaux) {
         const cycleTexteFiltred = cycleTexteTotal.map(arr => arr.filter(s => s.niveauId == nvId))
