@@ -32,8 +32,8 @@ export class DataService {
 
   // Vacances
   async create(vacance: Vacance): Promise<Vacance> {
-    const starDate = moment(vacance.startDate);
-    const endDate = moment(vacance.endDate);
+    const starDate = moment(vacance.startDate).add(1, 'minute');
+    const endDate = moment(vacance.endDate).add(1, 'minute');
     vacance.startDate = starDate.format('DD/MM/YYYY')
     vacance.endDate = endDate.format('DD/MM/YYYY')
     vacance.daysNumber = endDate.diff(starDate, 'days') + 1
