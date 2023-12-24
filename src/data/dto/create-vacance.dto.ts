@@ -3,4 +3,5 @@ export class CreateVacanceDto {
     readonly endDate: string;
     readonly text: string;
     readonly daysNumber: number;
+    readonly religious: boolean;
 }
