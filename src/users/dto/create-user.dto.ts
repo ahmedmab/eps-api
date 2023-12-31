@@ -80,3 +80,11 @@ export class CreateUserDto {
     readonly cycleTexteTotal: any[]
     // readonly place: Place;
 }
+
+export class UpdateRoleUserDto {
+    readonly role: string;
+}
+
+export class UpdateStatusUserDto {
+    readonly status: number;
+}

@@ -7,8 +7,8 @@ import * as mongoose from 'mongoose';
 export class UsersService {
   logger: Logger;
   constructor(@InjectModel(User.name)
-  private userModel: mongoose.Model<User>) { 
-    }
+  private userModel: mongoose.Model<User>) {
+  }
 
   async create(user: User): Promise<User> {
     const res = await this.userModel.create(user)
@@ -25,13 +25,23 @@ export class UsersService {
     return user;
   }
 
-  async findOne(query: any): Promise<any> {    
+  async findOne(query: any): Promise<any> {
     const user = await this.userModel.findOne(query).exec();
     return user
   }
 
   async update(id: string, upUser: User) {
     const user = await this.userModel.findByIdAndUpdate(id, upUser)
+    return user;
+  }
+
+  async updateRole(id: string, newRole: { role: string }) {
+    const user = await this.userModel.findByIdAndUpdate(id, { $set: newRole })
+    return user;
+  }
+
+  async updateStatus(id: string, status: { status: number }) {
+    const user = await this.userModel.findByIdAndUpdate(id, { $set: status })
     return user;
   }
 
