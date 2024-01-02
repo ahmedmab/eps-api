@@ -34,7 +34,7 @@ export class DataController {
     }
   }
 
-  @Put(':id')
+  @Put('vacances/:id')
   async update(@Param('id') id: string, @Body() vacance: CreateVacanceDto): Promise<any> {
     return this.dataService.update(id, vacance);
   }

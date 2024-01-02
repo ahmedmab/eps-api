@@ -41,9 +41,14 @@ export class DataService {
     return res
   }
 
-  async update(id: string, upUser: Vacance) {
-    const vacance = await this.vacanceModel.findByIdAndUpdate(id, upUser)
-    return vacance;
+  async update(id: string, vacance: Vacance) {
+    const starDate = moment(vacance.startDate).add(1, 'minute');
+    const endDate = moment(vacance.endDate).add(1, 'minute');
+    vacance.startDate = starDate.format('DD/MM/YYYY')
+    vacance.endDate = endDate.format('DD/MM/YYYY')
+    vacance.daysNumber = endDate.diff(starDate, 'days') + 1
+    const res = await this.vacanceModel.findByIdAndUpdate(id, vacance)
+    return res;
   }
 
   async findAllVacances(): Promise<Vacance[]> {

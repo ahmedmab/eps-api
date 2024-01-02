@@ -1,4 +1,4 @@
-import { Controller, Get, Post, Body, Patch, Param, Delete, Logger, Query, Put } from '@nestjs/common';
+import { Controller, Get, Post, Body, Param, Delete, Logger, Query, Put } from '@nestjs/common';
 import { CreateQuizDto } from 'src/aps/dto/create-quiz.dto';
 import { UpdateQuizDto } from 'src/aps/dto/update-quiz.dto';
 import { QuizService } from 'src/aps/services/quiz.service';
