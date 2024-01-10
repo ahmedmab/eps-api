@@ -35,8 +35,11 @@ export class UsersController {
   }
 
   @Get('find')
-  async findUser(@Query('phone') query: any): Promise<any> {
-    return this.usersService.findOne({ phone: (`+${query}`).replace(/\s/g, '') });
+  // async findUser(@Query('phone') query: any): Promise<any> {
+  //   return this.usersService.findOne({ phone: (`+${query}`).replace(/\s/g, '') });
+  // }
+  async findUser(@Query('email') query: any): Promise<any> {
+    return this.usersService.findOne({ email: query });
   }
 
   @Get(':id')
