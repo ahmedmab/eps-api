@@ -76,10 +76,10 @@ export class User {
     @Prop({ required: true, unique: true })
     uid: string;
 
-    @Prop({ required: true, unique: true })
+    @Prop({ unique: true })
     phone: string;
 
-    @Prop({ unique: true })
+    @Prop({ required: true, unique: true })
     email: string;
 
     @Prop({ required: true, default: 1 })
