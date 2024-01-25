@@ -10,7 +10,7 @@ import { CyclesService } from './services/cycles.service';
 @Module({
   imports:
     [MongooseModule.forFeature([{ name: 'Quiz', schema: QuizSchema }], 'aps'),
-    MongooseModule.forFeature([{ name: 'Cycles', schema: CyclesSchema }], 'aps')],
+    MongooseModule.forFeature([{ name: 'Cycle', schema: CyclesSchema }], 'aps')],
   controllers: [QuizController, CyclesController],
   providers: [QuizService, CyclesService],
 })

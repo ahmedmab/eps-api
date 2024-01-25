@@ -1,26 +1,26 @@
 import { Injectable, Logger } from '@nestjs/common';
 import * as mongoose from 'mongoose';
 import { InjectModel } from '@nestjs/mongoose';
-import { Cycles } from '../schemas/cycles.schema';
+import { Cycle } from '../schemas/cycles.schema';
 
 @Injectable()
 export class CyclesService {
   logger: Logger;
-  constructor(@InjectModel(Cycles.name, 'aps')
-  private cyclesModel: mongoose.Model<Cycles>) {
+  constructor(@InjectModel(Cycle.name, 'aps')
+  private cyclesModel: mongoose.Model<Cycle>) {
   }
 
-  async create(cycles: Cycles): Promise<Cycles> {
+  async create(cycles: Cycle): Promise<Cycle> {
     const res = await this.cyclesModel.create(cycles)
     return res
   }
 
-  async findAll(): Promise<Cycles[]> {
+  async findAll(): Promise<Cycle[]> {
     const cycles = await this.cyclesModel.find()
     return cycles
   }
 
-  async findByAps(apsId: number): Promise<Cycles[]> {
+  async findByAps(apsId: number): Promise<Cycle[]> {
     if (!apsId) {
       const cycles = await this.cyclesModel.find()
       return cycles
@@ -29,7 +29,7 @@ export class CyclesService {
     return cycles
   }
 
-  async findById(id: string): Promise<Cycles> {
+  async findById(id: string): Promise<Cycle> {
     const cycle = await this.cyclesModel.findById(id)
     return cycle;
   }
@@ -39,7 +39,7 @@ export class CyclesService {
     return cycle
   }
 
-  async update(id: string, upUser: Cycles) {
+  async update(id: string, upUser: Cycle) {
     const cycle = await this.cyclesModel.findByIdAndUpdate(id, upUser)
     return cycle;
   }

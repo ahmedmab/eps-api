@@ -6,7 +6,8 @@ class Situation {
     readonly criteres_de_realisation: string[];
     readonly criteres_de_reussite: string[];
     readonly consignes: string[];
-    readonly variables_de_regulation: string[]
+    readonly variables_de_regulation: string[];
+    readonly image: string;
 }
 
 class Lesson {
@@ -21,8 +22,9 @@ class Sequence {
     readonly lessons: Lesson[];
 }
 
-class Cycle {
+export class CreateCyclesDto {
     readonly nvId: number;
+    readonly nvName: string;
     readonly apsId: number;
     readonly apsName: string;
     readonly apsFamille: string;
@@ -31,10 +33,10 @@ class Cycle {
     readonly sequences: Sequence[];
 }
 
-export class CreateCyclesDto {
-    readonly apsId: number;
-    readonly apsName: string;
-    readonly apsFamille: string;
-    @Type(() => Cycle)
-    readonly cycles: Cycle[];
-}
+// export class CreateCyclesDto {
+//     readonly apsId: number;
+//     readonly apsName: string;
+//     readonly apsFamille: string;
+//     @Type(() => Cycle)
+//     readonly cycles: Cycle[];
+// }

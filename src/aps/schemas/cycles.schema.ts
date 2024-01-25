@@ -14,6 +14,8 @@ class Situation {
     consignes: string[];
     @Prop()
     variables_de_regulation: string[]
+    @Prop()
+    image: string;
 }
 
 @Schema({ _id: false })
@@ -32,10 +34,12 @@ class Sequence {
     lessons: Lesson[];
 }
 
-@Schema({ _id: false })
+export @Schema()
 class Cycle {
     @Prop()
     nvId: number;
+    @Prop({ required: true })
+    nvName: string;
     @Prop({ required: true })
     apsId: number;
     @Prop({ required: true })
@@ -48,20 +52,20 @@ class Cycle {
     sequences: Sequence[];
 }
 
-export @Schema()
-class Cycles {
+// export @Schema()
+// class Cycles {
 
-    @Prop({ required: true })
-    apsId: number;
+//     @Prop({ required: true })
+//     apsId: number;
 
-    @Prop({ required: true })
-    apsName: string;
+//     @Prop({ required: true })
+//     apsName: string;
 
-    @Prop({ required: true })
-    apsFamille: string;
+//     @Prop({ required: true })
+//     apsFamille: string;
 
-    @Prop({ type: [], required: true })
-    cycles: Cycle[];
-}
+//     @Prop({ type: [], required: true })
+//     cycles: Cycle[];
+// }
 
-export const CyclesSchema = SchemaFactory.createForClass(Cycles)
+export const CyclesSchema = SchemaFactory.createForClass(Cycle)
