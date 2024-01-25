@@ -2,7 +2,7 @@ import { Type } from "class-transformer";
 
 class Situation {
     readonly but: string;
-    readonly condition_de_realisation: string[];
+    readonly description: string[];
     readonly criteres_de_realisation: string[];
     readonly criteres_de_reussite: string[];
     readonly consignes: string[];
@@ -23,7 +23,9 @@ class Sequence {
 
 class Cycle {
     readonly nvId: number;
-    readonly session: number;
+    readonly apsId: number;
+    readonly apsName: string;
+    readonly apsFamille: string;
     readonly otc: string;
     @Type(() => Sequence)
     readonly sequences: Sequence[];

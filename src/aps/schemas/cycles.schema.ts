@@ -5,7 +5,7 @@ class Situation {
     @Prop()
     but: string;
     @Prop()
-    condition_de_realisation: string[];
+    description: string[];
     @Prop()
     criteres_de_realisation: string[];
     @Prop()
@@ -36,8 +36,12 @@ class Sequence {
 class Cycle {
     @Prop()
     nvId: number;
-    @Prop()
-    session: number;
+    @Prop({ required: true })
+    apsId: number;
+    @Prop({ required: true })
+    apsName: string;
+    @Prop({ required: true })
+    apsFamille: string;
     @Prop()
     otc: string;
     @Prop()
