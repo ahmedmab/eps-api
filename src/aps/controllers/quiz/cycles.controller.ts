@@ -17,8 +17,8 @@ export class CyclesController {
   }
 
   @Get()
-  async findByAps(@Query('apsId') apsId: number): Promise<any> {
-    return this.cyclesService.findByAps(apsId);
+  async findByAps(@Query('apsId') apsId: number, @Query('nvId') nvId: number): Promise<any> {
+    return this.cyclesService.findByApsNv(apsId, nvId);
   }
 
   @Get(':id')

@@ -20,12 +20,21 @@ export class CyclesService {
     return cycles
   }
 
-  async findByAps(apsId: number): Promise<Cycle[]> {
-    if (!apsId) {
+  async findByApsNv(apsId: number, nvId: number): Promise<Cycle[]> {
+    if (!apsId && !nvId) {
       const cycles = await this.cyclesModel.find()
       return cycles
     }
-    const cycles = await this.cyclesModel.find({ apsId: apsId })
+    else if (!apsId && nvId) {
+      const cycles = await this.cyclesModel.find({ nvId: nvId })
+      return cycles
+    }
+
+    else if (apsId && !nvId) {
+      const cycles = await this.cyclesModel.find({ apsId: apsId })
+      return cycles
+    }
+    const cycles = await this.cyclesModel.find({ apsId: apsId, nvId: nvId })
     return cycles
   }
 
