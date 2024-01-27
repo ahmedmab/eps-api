@@ -21,7 +21,13 @@ class Situation {
 @Schema({ _id: false })
 class Lesson {
     @Prop()
+    ordre: number;
+    @Prop()
     objectif: string;
+    @Prop()
+    sequenceId: number;
+    @Prop()
+    sequence: string;
     @Prop()
     situations: Situation[];
 }

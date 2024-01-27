@@ -11,6 +11,9 @@ class Situation {
 }
 
 class Lesson {
+    readonly ordre: number;
+    readonly sequenceId: number;
+    readonly sequence: string;
     readonly objectif: string;
     @Type(() => Situation)
     readonly situations: Situation[];
