@@ -14,12 +14,12 @@ export class UsersController {
   async create(@Body() user: CreateUserDto): Promise<any> {
     const newUser = user;
     try {
-      const query = { phone: newUser.phone };
-      const isUser = await this.usersService.findOne(query);
-      if (isUser) {
-        return this.usersService.update(isUser._id, newUser)
-        // throw new ConflictException('User Already Exist'); 
-      }
+      // const query = { phone: newUser.phone };
+      // const isUser = await this.usersService.findOne(query);
+      // if (isUser) {
+      //   return this.usersService.update(isUser._id, newUser)
+      //   throw new ConflictException('User Already Exist'); 
+      // }
 
       const user = await this.usersService.create(newUser);
       return user;
