@@ -20,7 +20,6 @@ export class UsersController {
       //   return this.usersService.update(isUser._id, newUser)
       //   throw new ConflictException('User Already Exist'); 
       // }
-
       const user = await this.usersService.create(newUser);
       return user;
     } catch (err) {
