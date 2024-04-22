@@ -17,8 +17,8 @@ export class ObservableController {
   }
 
   @Get()
-  async findByAps(@Query('apsId') apsId: number): Promise<any> {
-    return this.observableService.findByAps(apsId);
+  async findByCriteria(@Query('apsId') apsId: number, @Query('nvId') nvId: number): Promise<any> {
+    return this.observableService.findByCriteria(apsId, nvId);
   }
 
   @Get(':id')

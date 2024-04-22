@@ -20,12 +20,17 @@ export class ObservableService {
     return observables
   }
 
-  async findByAps(apsId: number): Promise<Observable[]> {
+  async findByCriteria(apsId: number, nvId: number): Promise<Observable[]> {
     if (!apsId) {
       const observables = await this.observableModel.find()
       return observables
     }
-    const observables = await this.observableModel.find({ apsId: apsId })
+    const observables = await this.observableModel.find({
+      $or: [
+        { apsId: apsId },
+        { nvId: nvId }
+      ]
+    })
     return observables
   }
 
