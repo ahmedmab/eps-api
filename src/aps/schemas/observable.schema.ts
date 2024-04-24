@@ -6,8 +6,14 @@ class Observable {
     @Prop({ required: true })
     apsId: number;
 
+    @Prop({ required: true })
+    apsName: string;
+
     @Prop({ required: false })
     nvId: number;
+
+    @Prop({ required: true })
+    nvName: string;
 
     @Prop({ required: true })
     type: string;
