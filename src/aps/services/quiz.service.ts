@@ -20,12 +20,12 @@ export class QuizService {
     return users
   }
 
-  async findByAps(apsId: number): Promise<Quiz[]> {
+  async findByApsandNv(apsId: number, nvId: number): Promise<Quiz[]> {
     if (!apsId) {
       const users = await this.quizModel.find()
       return users
     }
-    const users = await this.quizModel.find({ apsId: apsId })
+    const users = await this.quizModel.find({ apsId: apsId, nvId: nvId })
     return users
   }
 

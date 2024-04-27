@@ -13,7 +13,7 @@ export class ObservableController {
 
   @Post()
   create(@Body() createObservableDto: CreateObservableDto) {
-    return this.observableService.create(createObservableDto);
+    return this.observableService.create(createObservableDto); 
   }
 
   @Get()

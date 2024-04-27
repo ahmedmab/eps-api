@@ -17,13 +17,13 @@ export class QuizController {
   }
 
   @Get()
-  async findByAps(@Query('apsId') apsId: number): Promise<any> {
-    return this.quizService.findByAps(apsId);
+  async findByApsandNv(@Query('apsId') apsId: number, @Query('nvId') nvId: number): Promise<any> {
+    return this.quizService.findByApsandNv(apsId, nvId);
   }
 
   @Get(':id')
-  findOne(@Param('id') id: string) {
-    return this.quizService.findOne(+id);
+  findById(@Param('id') id: string) {
+    return this.quizService.findById(id);
   }
 
   @Put(':id')

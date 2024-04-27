@@ -12,6 +12,8 @@ export class CreateQuizDto {
     readonly updatedBy: string;
     readonly apsId: number;
     readonly apsName: string;
+    readonly nvId: number;
+    readonly nvName: string;
     readonly difficulty: number;
     readonly question: string;
     @Type(() => Reponse)
