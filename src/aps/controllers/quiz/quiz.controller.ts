@@ -17,7 +17,7 @@ export class QuizController {
   }
 
   @Get()
-  async findByApsandNv(@Query('apsId') apsId: number, @Query('nvId') nvId: number): Promise<any> {
+  async findByApsAndNv(@Query('apsId') apsId: number, @Query('nvId') nvId: number): Promise<any> {
     return this.quizService.findByApsandNv(apsId, nvId);
   }
 

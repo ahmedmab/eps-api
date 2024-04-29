@@ -25,12 +25,7 @@ export class ObservableService {
       const observables = await this.observableModel.find()
       return observables
     }
-    const observables = await this.observableModel.find({
-      $or: [
-        { apsId: apsId },
-        { nvId: nvId }
-      ]
-    })
+    const observables = await this.observableModel.find({ apsId: apsId, nvId: nvId })
     return observables
   }
 
