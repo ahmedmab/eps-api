@@ -4,6 +4,7 @@ import mongoose from 'mongoose';
 import { InjectModel } from '@nestjs/mongoose';
 import { Direction } from './schemas/direction.schema';
 import { Vacance } from './schemas/vacance.schema';
+import { SchoolYear } from './schemas/schoolYear.schema';
 import * as moment from "moment";
 
 @Injectable()
@@ -13,8 +14,11 @@ export class DataService {
     @InjectModel(Direction.name)
     private directionModel: mongoose.Model<Direction>,
     @InjectModel(Vacance.name) private vacanceModel: mongoose.Model<Vacance>,
+    @InjectModel(SchoolYear.name) private schoolYearModel: mongoose.Model<SchoolYear>,
+
   ) { }
 
+  // Academie et Direction
   async findAllAcademie(): Promise<Academie[]> {
     const academies = await this.academieModel.find();
     return academies;
@@ -59,5 +63,23 @@ export class DataService {
   async removeVacance(id: string) {
     const vacance = await this.vacanceModel.findByIdAndDelete(id)
     return vacance;
+  }
+
+  // Année Scolaire
+  async findSchoolYear(): Promise<SchoolYear[]> {
+    const schoolYear = await this.schoolYearModel.find();
+    return schoolYear;
+  }
+
+  async findSchoolYearById(id: string): Promise<SchoolYear> {    
+    const schoolYear = await this.schoolYearModel.findById(id);
+    console.log(id);
+    
+    return schoolYear;
+  }
+
+  async updateSchoolYear(id: string, schoolYear: SchoolYear) {
+    const res = await this.schoolYearModel.findByIdAndUpdate(id, schoolYear)
+    return res;
   }
 }

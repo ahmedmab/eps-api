@@ -1,10 +1,27 @@
 import { Body, Controller, Delete, Get, Header, Param, Post, Put, Query } from '@nestjs/common';
 import { DataService } from './data.service';
 import { CreateVacanceDto } from './dto/create-vacance.dto';
+import { CreateSchoolYearDto } from './dto/school-year.dto';
 
 @Controller('data')
 export class DataController {
   constructor(private readonly dataService: DataService) { }
+
+  // Année Scolaire
+  @Get('school-year/:id')
+  async findSchoolYearById(@Param('id') id: string): Promise<any> {
+    return this.dataService.findSchoolYearById(id);
+  }
+
+  @Get('school-year')
+  async findSchoolYear(): Promise<any> {
+    return this.dataService.findSchoolYear();
+  }
+
+  @Put('school-year/:id')
+  async updateSchoolYear(@Param('id') id: string, @Body() schoolYear: CreateSchoolYearDto): Promise<any> {
+    return this.dataService.updateSchoolYear(id, schoolYear);
+  }
 
   //etablissement data
   @Get('academies')
