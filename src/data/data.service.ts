@@ -72,9 +72,7 @@ export class DataService {
   }
 
   async findSchoolYearById(id: string): Promise<SchoolYear> {    
-    const schoolYear = await this.schoolYearModel.findById(id);
-    console.log(id);
-    
+    const schoolYear = await this.schoolYearModel.findById(id);    
     return schoolYear;
   }
 

@@ -14,11 +14,13 @@ export function cycleHandler(req: Request, res: Response, next: NextFunction) {
 
     //ajouter la partie avant les cycles -PPG et premier contact
     const ppgEndDate: string = cycles[0].startDate
+    const startYear: string = req.body.schoolYear.startDate
     const ppg = {
         ordre: 0,
         apsName: "",
-        apsFamille: "",
-        startDate: "2023-09-02T23:00:00.000Z",
+        apsFamille: "", 
+        // startDate: "2023-09-02T23:00:00.000Z",
+        startDate: new Date(startYear),
         endDate: new Date(moment(ppgEndDate).subtract(2, 'd').toString())
     }
 
