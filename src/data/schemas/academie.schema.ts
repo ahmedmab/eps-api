@@ -6,6 +6,8 @@ class Academie {
     id: number;
     @Prop()
     name: string;
+    @Prop()
+    horaire: string[]
 }
 
 export const AcademieSchema = SchemaFactory.createForClass(Academie)

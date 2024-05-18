@@ -18,6 +18,7 @@ import { DataModule } from './data/data.module';
       isGlobal: true
     }),
     MongooseModule.forRoot(process.env.DB_URL),
+    MongooseModule.forRoot(process.env.DB_DATA_URL, { connectionName: 'data' }), 
     MongooseModule.forRoot(process.env.DB_APS_URL, { connectionName: 'aps' }),
     UsersModule,
     ApsModule,

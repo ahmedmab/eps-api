@@ -6,7 +6,7 @@ import { Quiz } from '../schemas/quiz.schema';
 @Injectable()
 export class QuizService {
   logger: Logger;
-  constructor(@InjectModel(Quiz.name, 'aps')
+  constructor(@InjectModel(Quiz.name, 'aps') 
   private quizModel: mongoose.Model<Quiz>) {
   }
 

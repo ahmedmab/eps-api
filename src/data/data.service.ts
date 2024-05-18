@@ -10,11 +10,11 @@ import * as moment from "moment";
 @Injectable()
 export class DataService {
   constructor(
-    @InjectModel(Academie.name) private academieModel: mongoose.Model<Academie>,
-    @InjectModel(Direction.name)
+    @InjectModel(Academie.name, 'data') private academieModel: mongoose.Model<Academie>,
+    @InjectModel(Direction.name, 'data')
     private directionModel: mongoose.Model<Direction>,
-    @InjectModel(Vacance.name) private vacanceModel: mongoose.Model<Vacance>,
-    @InjectModel(SchoolYear.name) private schoolYearModel: mongoose.Model<SchoolYear>,
+    @InjectModel(Vacance.name, 'data') private vacanceModel: mongoose.Model<Vacance>,
+    @InjectModel(SchoolYear.name, 'data') private schoolYearModel: mongoose.Model<SchoolYear>,
 
   ) { }
 
