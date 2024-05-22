@@ -22,7 +22,7 @@ class Module {
 @Schema()
 export class Niveau {
     @Prop()
-    id: string;
+    nvId: number;
 
     @Prop({ required: true, unique: true })
     name: string;

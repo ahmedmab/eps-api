@@ -6,6 +6,7 @@ import { Direction } from './schemas/direction.schema';
 import { Vacance } from './schemas/vacance.schema';
 import { SchoolYear } from './schemas/schoolYear.schema';
 import * as moment from "moment";
+import { Niveau } from './schemas/niveau.schema';
 
 @Injectable()
 export class DataService {
@@ -15,6 +16,7 @@ export class DataService {
     private directionModel: mongoose.Model<Direction>,
     @InjectModel(Vacance.name, 'data') private vacanceModel: mongoose.Model<Vacance>,
     @InjectModel(SchoolYear.name, 'data') private schoolYearModel: mongoose.Model<SchoolYear>,
+    @InjectModel(Niveau.name, 'data') private niveauModel: mongoose.Model<Niveau>,
 
   ) { }
 
@@ -71,13 +73,29 @@ export class DataService {
     return schoolYear;
   }
 
-  async findSchoolYearById(id: string): Promise<SchoolYear> {    
-    const schoolYear = await this.schoolYearModel.findById(id);    
+  async findSchoolYearById(id: string): Promise<SchoolYear> {
+    const schoolYear = await this.schoolYearModel.findById(id);
     return schoolYear;
   }
 
   async updateSchoolYear(id: string, schoolYear: SchoolYear) {
     const res = await this.schoolYearModel.findByIdAndUpdate(id, schoolYear)
+    return res;
+  }
+
+  // Niveau Scolaire
+  async findNiveaux(): Promise<Niveau[]> {
+    const niveau = await this.niveauModel.find();
+    return niveau;
+  }
+
+  async findNiveauByNvId(nvId: any): Promise<Niveau> {
+    const niveau = await this.niveauModel.findOne(nvId).exec();
+    return niveau;
+  }
+
+  async updateNiveau(id: number, niveau: Niveau) {
+    const res = await this.niveauModel.findByIdAndUpdate(id, niveau)
     return res;
   }
 }

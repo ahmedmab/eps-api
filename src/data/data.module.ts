@@ -6,6 +6,7 @@ import { AcademieSchema } from './schemas/academie.schema';
 import { DirectionSchema } from './schemas/direction.schema';
 import { VacanceSchema } from './schemas/vacance.schema';
 import { schoolYearSchema } from './schemas/schoolYear.schema';
+import { NiveauSchema } from './schemas/niveau.schema';
 
 @Module({
   imports: [
@@ -13,6 +14,7 @@ import { schoolYearSchema } from './schemas/schoolYear.schema';
   MongooseModule.forFeature([{ name: 'Direction', schema: DirectionSchema }], 'data'),
   MongooseModule.forFeature([{ name: 'Vacance', schema: VacanceSchema }], 'data'),
   MongooseModule.forFeature([{ name: 'SchoolYear', schema: schoolYearSchema }], 'data'),
+  MongooseModule.forFeature([{ name: 'Niveau', schema: NiveauSchema }], 'data'),
 ],
   controllers: [DataController],
   providers: [DataService]

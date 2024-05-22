@@ -2,6 +2,7 @@ import { Body, Controller, Delete, Get, Header, Param, Post, Put, Query } from '
 import { DataService } from './data.service';
 import { CreateVacanceDto } from './dto/create-vacance.dto';
 import { CreateSchoolYearDto } from './dto/school-year.dto';
+import { CreateNiveauDto } from './dto/create-niveau.dto';
 
 @Controller('data')
 export class DataController {
@@ -21,6 +22,23 @@ export class DataController {
   @Put('school-year/:id')
   async updateSchoolYear(@Param('id') id: string, @Body() schoolYear: CreateSchoolYearDto): Promise<any> {
     return this.dataService.updateSchoolYear(id, schoolYear);
+  }
+
+  // Niveau Scolaire
+  @Get('niveau')
+  async findNiveauByNvId(@Query('nvId') query: number): Promise<any> {
+    return this.dataService.findNiveauByNvId({ nvId: query });
+
+  }
+
+  @Get('niveau/all')
+  async findNiveaux(): Promise<any> {
+    return this.dataService.findNiveaux();
+  }
+
+  @Put('niveau/:id')
+  async updateNiveau(@Param('id') id: number, @Body() niveau: CreateNiveauDto): Promise<any> {
+    return this.dataService.updateNiveau(id, niveau);
   }
 
   //etablissement data
