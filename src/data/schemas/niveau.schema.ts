@@ -1,5 +1,4 @@
 import { SchemaFactory, Prop, Schema } from '@nestjs/mongoose'
-import * as mongoose from 'mongoose';
 
 @Schema({ _id: false })
 class Competence {
@@ -14,7 +13,7 @@ class Module {
     @Prop()
     name: string;
 
-    @Prop({ type: mongoose.Schema.Types.ObjectId, ref: 'Competence' })
+    @Prop({ type: [] })
     competences: Competence[];
 }
 
@@ -34,10 +33,10 @@ export class Niveau {
     oti: string;
 
     @Prop()
-    module1: Module[];
+    module1: Module;
 
     @Prop()
-    module2: Module[];
+    module2: Module;
 
 }
 

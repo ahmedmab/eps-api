@@ -1,6 +1,6 @@
 class Competence {
     readonly id: number;
-    readonly name: string; 
+    readonly name: string;
 }
 class Module {
     readonly name: string;
@@ -12,6 +12,6 @@ export class CreateNiveauDto {
     readonly name: string;
     readonly longName: string;
     readonly oti: string;
-    readonly module1: Module[];
-    readonly module2: Module[];
+    readonly module1: Module;
+    readonly module2: Module;
 }
