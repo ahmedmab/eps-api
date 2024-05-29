@@ -5,7 +5,7 @@ class Situation {
     @Prop()
     but: string;
     @Prop()
-    description: string[];
+    conditions_de_realisation: string[];
     @Prop()
     criteres_de_realisation: string[];
     @Prop()

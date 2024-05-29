@@ -2,7 +2,7 @@ import { Type } from "class-transformer";
 
 class Situation {
     readonly but: string;
-    readonly description: string[];
+    readonly conditions_de_realisation: string[];
     readonly criteres_de_realisation: string[];
     readonly criteres_de_reussite: string[];
     readonly consignes: string[];
