@@ -35,6 +35,11 @@ export class UsersService {
     return user;
   }
 
+  async updateGroupeStudent(id: string, upUser: User) {
+    const user = await this.userModel.findByIdAndUpdate(id, upUser)
+    return user;
+  }
+
   async updateRole(id: string, newRole: { role: string }) {
     const user = await this.userModel.findByIdAndUpdate(id, { $set: newRole })
     return user;

@@ -18,7 +18,7 @@ import { DataModule } from './data/data.module';
       isGlobal: true
     }),
     MongooseModule.forRoot(process.env.DB_URL),
-    MongooseModule.forRoot(process.env.DB_DATA_URL, { connectionName: 'data' }), 
+    MongooseModule.forRoot(process.env.DB_DATA_URL, { connectionName: 'data' }),
     MongooseModule.forRoot(process.env.DB_APS_URL, { connectionName: 'aps' }),
     UsersModule,
     ApsModule,
@@ -36,11 +36,11 @@ export class AppModule implements NestModule {
         classeDates,
         cycleTexte
       )
-      //   .exclude(
-      //     { path: 'users/(.*)', method: RequestMethod.GET },
-      //     { path: 'users/:id', method: RequestMethod.GET },
-      //     { path: 'users/:id', method: RequestMethod.DELETE },
-      //   )
+      // .exclude(
+        //     { path: 'users/(.*)', method: RequestMethod.GET },
+        // { path: 'users/:id/groupes', method: RequestMethod.PATCH },
+        //     { path: 'users/:id', method: RequestMethod.DELETE },
+      // )
       // .forRoutes(UsersController);
       .forRoutes(
         { path: 'users/create', method: RequestMethod.POST },

@@ -14,6 +14,14 @@ class Seance {
 }
 
 @Schema({ _id: false })
+class Groupe {
+    @Prop()
+    name: number;
+    @Prop()
+    liste: string[];
+}
+
+@Schema({ _id: false })
 class Classe {
     @Prop()
     name: string;
@@ -29,6 +37,8 @@ class Classe {
     cycles: any[];
     @Prop()
     students: any[];
+    @Prop()
+    groupes: Groupe[];
 }
 
 @Schema({ _id: false })
@@ -77,7 +87,7 @@ export class User {
     uid: string;
 
     @Prop()
-    phone: string; 
+    phone: string;
 
     @Prop({ required: true, unique: true })
     email: string;

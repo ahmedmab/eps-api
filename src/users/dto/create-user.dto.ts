@@ -9,6 +9,11 @@ class Seance {
 
 }
 
+class Groupe {
+    readonly name: number;
+    readonly liste: string[];
+}
+
 class Classe {
     readonly name: string;
     readonly nvId: number;
@@ -19,6 +24,8 @@ class Classe {
     readonly seance2: Seance;
     readonly cycles: any[];
     readonly students: any[];
+    @Type(() => Seance)
+    readonly groupes: Groupe[];
 }
 
 // class Place {
