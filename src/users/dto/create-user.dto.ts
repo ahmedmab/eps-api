@@ -11,7 +11,8 @@ class Seance {
 
 class Groupe {
     readonly name: number;
-    readonly liste: string[];
+    readonly color: number;
+    readonly list: string[];
 }
 
 class Classe {

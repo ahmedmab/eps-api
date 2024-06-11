@@ -35,8 +35,8 @@ export class UsersService {
     return user;
   }
 
-  async updateGroupeStudent(id: string, upUser: User) {
-    const user = await this.userModel.findByIdAndUpdate(id, upUser)
+  async updateGroupeStudent(id: string, newGroupes: { groupes: any[] }) {
+    const user = await this.userModel.findByIdAndUpdate(id, { $set: newGroupes })
     return user;
   }
 

@@ -18,7 +18,7 @@ class Groupe {
     @Prop()
     name: number;
     @Prop()
-    liste: string[];
+    list: string[];
 }
 
 @Schema({ _id: false })
