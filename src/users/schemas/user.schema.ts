@@ -18,6 +18,10 @@ class Groupe {
     @Prop()
     name: number;
     @Prop()
+    color: number;
+    @Prop()
+    capitain: string;
+    @Prop()
     list: string[];
 }
 

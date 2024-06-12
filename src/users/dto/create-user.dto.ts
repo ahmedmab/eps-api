@@ -12,6 +12,7 @@ class Seance {
 class Groupe {
     readonly name: number;
     readonly color: number;
+    readonly capitain: string;
     readonly list: string[];
 }
 
