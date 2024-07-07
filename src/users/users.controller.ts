@@ -60,6 +60,11 @@ export class UsersController {
     return this.usersService.update(id, user);
   }
 
+  @Patch(':id/classe')
+  async updateUserClasse(@Param('id') id: string, @Body() body: any): Promise<any> {
+    return this.usersService.updateClasse(id, body);
+  }
+
   @Patch(':id/role')
   async updateRole(@Param('id') id: string, @Body() newRole: UpdateRoleUserDto): Promise<any> {
     return this.usersService.updateRole(id, newRole);

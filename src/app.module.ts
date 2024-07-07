@@ -10,6 +10,7 @@ import { classeDates } from './middleware/classeDates.middleware';
 import { cycleTexte } from './middleware/cyclesTexte.middleware';
 import { ApsModule } from './aps/aps.module';
 import { DataModule } from './data/data.module';
+import { classeHandler } from './middleware/classe.middleware';
 
 @Module({
   imports: [
@@ -37,14 +38,15 @@ export class AppModule implements NestModule {
         cycleTexte
       )
       // .exclude(
-        //     { path: 'users/(.*)', method: RequestMethod.GET },
-        // { path: 'users/:id/groupes', method: RequestMethod.PATCH },
-        //     { path: 'users/:id', method: RequestMethod.DELETE },
+      //     { path: 'users/(.*)', method: RequestMethod.GET },
+      // { path: 'users/:id/groupes', method: RequestMethod.PATCH },
+      //     { path: 'users/:id', method: RequestMethod.DELETE },
       // )
       // .forRoutes(UsersController);
       .forRoutes(
         { path: 'users/create', method: RequestMethod.POST },
         { path: 'users/:id', method: RequestMethod.PUT });
+    consumer.apply(classeHandler).forRoutes({ path: 'users/:id/classe', method: RequestMethod.PATCH })
 
   }
 }
