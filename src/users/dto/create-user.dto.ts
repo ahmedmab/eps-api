@@ -16,6 +16,27 @@ class Groupe {
     readonly list: string[];
 }
 
+class Student {
+    readonly name: string;
+    readonly naissance: string;
+    readonly classe: string;
+    readonly num: number;
+    readonly naissanceYear: number;
+    readonly responsable: boolean;
+    readonly groupeName?: number;
+    readonly groupeColor?: string;
+    readonly maladie?: string;
+    readonly genre?: string;
+    readonly apsPref?: string;
+    readonly fc?: number;
+    readonly taille?: number;
+    readonly poids?: number;
+    readonly vma?: number;
+    readonly vitesse?: number;
+    readonly detV?: number;
+    readonly detH?: number;
+}
+
 class Classe {
     readonly name: string;
     readonly nvId: number;
@@ -25,7 +46,7 @@ class Classe {
     @Type(() => Seance)
     readonly seance2: Seance;
     readonly cycles: any[];
-    readonly students: any[];
+    readonly students: Student[];
     @Type(() => Seance)
     readonly groupes: Groupe[];
 }
@@ -63,7 +84,7 @@ export class CreateUserDto {
     readonly uid: string;
     readonly phone: string;
     readonly email: string;
-    readonly status: number; 
+    readonly status: number;
     readonly activationDate: Date;
     readonly role: 'standard' | 'admin' | 'owner';
     readonly academieId: number;
@@ -76,8 +97,8 @@ export class CreateUserDto {
     readonly niveaux: string[];
     // @ValidateNested({ each: true })
     @Type(() => Classe)
-    // @MaxLength(12, {
-    //     each: true,
+    // @MaxLength(12; {
+    //     each: true;
     //   })
     readonly classes: Classe[];
     @ValidateNested({ each: true })

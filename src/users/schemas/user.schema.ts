@@ -25,6 +25,46 @@ class Groupe {
     list: string[];
 }
 
+@Schema({ _id: true })
+class Student {
+    @Prop()
+    name: string;
+    @Prop()
+    naissance: string;
+    @Prop()
+    classe: string;
+    @Prop()
+    num: number;
+    @Prop()
+    naissanceYear: number;
+    @Prop()
+    responsable: boolean;
+    @Prop()
+    groupeName?: number;
+    @Prop()
+    groupeColor?: string;
+    @Prop()
+    maladie?: string;
+    @Prop()
+    genre?: string;
+    @Prop()
+    apsPref?: string;
+    @Prop()
+    fc?: number;
+    @Prop()
+    taille?: number;
+    @Prop()
+    poids?: number;
+    @Prop()
+    vma?: number;
+    @Prop()
+    vitesse?: number;
+    @Prop()
+    detV?: number;
+    @Prop()
+    detH?: number;
+}
+
 @Schema({ _id: false })
 class Classe {
     @Prop()
@@ -40,7 +80,7 @@ class Classe {
     @Prop()
     cycles: any[];
     @Prop()
-    students: any[];
+    students: Student[];
     @Prop()
     groupes: Groupe[];
 }
@@ -62,19 +102,6 @@ class Cycle {
     @Prop()
     weeks: any[];
 }
-
-// @Schema({ _id: false })
-// class Place {
-//     @Prop()
-//     name: string;
-//     @Prop()
-//     @Prop()
-//     province: string;
-//     @Prop()
-//     region: string;
-//     @Prop()
-//     country: string;
-// }
 
 @Schema({ timestamps: true })
 export class User {
