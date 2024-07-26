@@ -20,7 +20,7 @@
     "test:e2e": "jest --config ./test/jest-e2e.json",
     "serve:firebase": "npm run build && firebase serve --project eps-io --only functions",
     "shell:firebase": "npm run build && firebase functions:shell",
-    "deploy:firebase": "firebase deploy --project eps-io --only functions",
+    "deploy:firebase": "npm run build && firebase deploy --project eps-io --only functions",
     "logs": "firebase functions:log"
   },
   "engines": {
