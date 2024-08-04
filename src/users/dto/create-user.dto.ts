@@ -35,6 +35,7 @@ class Student {
     readonly vitesse?: number;
     readonly detV?: number;
     readonly detH?: number;
+    readonly toResults?: any[];
 }
 
 class Classe {
@@ -51,25 +52,12 @@ class Classe {
     readonly groupes: Groupe[];
 }
 
-// class Place {
-//     readonly name: string;
-//     readonly province: string;
-//     readonly region: string;
-//     readonly country: string;
-
-// }
-
-// class TableauDays {
-//     readonly name: string;
-//     readonly dayId: number;
-//     @Type(() => Classe)
-//     readonly classes: Classe[];
-// }
 
 class Cycle {
     readonly ordre: number;
     readonly apsId: number;
     readonly apsName: string;
+    readonly apsShortName: string;
     readonly apsFamille: string;
     readonly startDate: string;
     readonly endDate: string;

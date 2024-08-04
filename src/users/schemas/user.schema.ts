@@ -63,7 +63,10 @@ class Student {
     detV?: number;
     @Prop()
     detH?: number;
+    @Prop()
+    toResults?: any[];
 }
+
 
 @Schema({ _id: false })
 class Classe {
@@ -93,6 +96,8 @@ class Cycle {
     apsId: number;
     @Prop()
     apsName: string;
+    @Prop()
+    apsShortName: string;
     @Prop()
     apsFamille: string;
     @Prop()
